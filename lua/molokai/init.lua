@@ -4,7 +4,7 @@ local theme = require("molokai.theme")
 local M = {}
 
 function M.colorscheme()
-  util.load(theme.setup())
+    util.load(theme)
 end
 
 return M
