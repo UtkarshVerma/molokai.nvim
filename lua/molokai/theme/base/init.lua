@@ -12,4 +12,3 @@ for _, path in ipairs(paths) do
 end
 
 return M
-

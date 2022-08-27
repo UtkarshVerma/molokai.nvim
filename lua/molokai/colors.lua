@@ -15,7 +15,8 @@ local colors = {
     comment = "#7e8e91",
 }
 
-colors.bg_highlight = util.lighten(colors.bg, 0.91)
+colors.bg_float = colors.none
+colors.bg_highlight = util.lighten(colors.bg, 0.9)
 util.bg = colors.bg
 colors.error = "#f44747"
 colors.warning = colors.orange

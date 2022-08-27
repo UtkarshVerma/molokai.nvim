@@ -25,14 +25,14 @@ return {
     -- TSFloat             = { };    -- For floats.
     -- TSFunction          = { };    -- For function (calls and definitions).
     TSFuncBuiltin     = { fg = c.orange }, -- For builtin functions: `table.insert` in Lua.
-    TSFuncMacro       = { fg = c.cyan }; -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
+    TSFuncMacro       = { fg = c.green }, -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
     -- TSInclude           = { };    -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
     -- TSKeyword           = { };    -- For keywords that don't fall in previous categories.
     -- TSKeywordFunction   = { },    -- For keywords used to define a fuction.
     TSLabel           = { fg = c.fg }, -- For labels: `label:` in C and `:label:` in Lua.
     -- TSMethod            = { },    -- For method calls and definitions.
     TSMethodCall      = { fg = c.cyan },
-    TSNamespace       = { fg = c.fg }, -- For identifiers referring to modules and namespaces.
+    TSNamespace       = { fg = c.green, style = "underline" }, -- For identifiers referring to modules and namespaces.
     -- TSNone              = { };    -- TODO: docs
     TSNumber          = { fg = c.purple }, -- For all numbers
     TSOperator        = { fg = c.blue5 }, -- For any operator: `+`, but also `->` and `*` in C.

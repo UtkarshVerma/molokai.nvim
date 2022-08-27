@@ -1,8 +1,6 @@
 local c = require("molokai.colors")
 local util = require("molokai.util")
 
-print(c)
-
 return {
     Comment      = { fg = c.comment }, -- any comment
     ColorColumn  = { bg = c.bg_highlight }, -- used for the columns set with 'colorcolumn'
@@ -40,10 +38,10 @@ return {
     -- NormalSB = { fg = c.fg_sidebar, bg = c.bg_sidebar }, -- normal text in non-current windows
     -- NormalFloat = { fg = c.fg, bg = c.bg_float }, -- Normal text in floating windows.
     -- FloatBorder = { fg = c.border_highlight, bg = c.bg_float },
-    -- Pmenu = { bg = c.bg_popup, fg = c.fg }, -- Popup menu: normal item.
-    -- PmenuSel = { bg = util.darken(c.fg_gutter, 0.8) }, -- Popup menu: selected item.
-    -- PmenuSbar = { bg = util.lighten(c.bg_popup, 0.95) }, -- Popup menu: scrollbar.
-    -- PmenuThumb = { bg = c.fg_gutter }, -- Popup menu: Thumb of the scrollbar.
+    Pmenu        = { bg = c.bg, fg = c.fg }, -- Popup menu: normal item.
+    PmenuSel     = { bg = c.bg_highlight }, -- Popup menu: selected item.
+    -- PmenuSbar    = { bg = util.lighten(c.bg_popup, 0.95) }, -- Popup menu: scrollbar.
+    -- PmenuThumb   = { bg = c.fg_gutter }, -- Popup menu: Thumb of the scrollbar.
     -- Question = { fg = c.blue }, -- |hit-enter| prompt and yes/no questions
     -- QuickFixLine = { bg = c.bg_visual, style = "bold" }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
     -- Search = { bg = c.bg_search, fg = c.fg }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
