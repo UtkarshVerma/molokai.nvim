@@ -1,6 +1,4 @@
-local util = require("molokai.util")
-
-local colors = {
+local c = {
     none = "NONE",
     bg = "#1b1d1e",
     red = "#f92672",
@@ -11,45 +9,42 @@ local colors = {
     purple = "#ae81ff",
     cyan = "#66d9ef",
     fg = "#f8f8f2",
+    gray = "#666666",
 
     comment = "#7e8e91",
 }
 
-colors.bg_float = colors.none
-colors.bg_highlight = util.lighten(colors.bg, 0.9)
-util.bg = colors.bg
-colors.error = "#f44747"
-colors.warning = colors.orange
+local util = require("molokai.util")
+util.bg = c.bg
+util.fg = c.fg
 
-colors.diff = {
-    add = colors.green,
-    delete = colors.red,
-    change = colors.yellow,
-    text = colors.fg,
+c.bg_float = util.lighten(c.bg, 0.95)
+c.bg_highlight = util.lighten(c.bg_float, 0.93)
+c.bg_gray = util.lighten(c.bg_highlight, 0.9)
+
+c.fg_alt = util.darken(c.fg, 0.8)
+
+c.info = c.cyan
+c.hint = c.purple
+c.error = "#f44747"
+c.warning = c.orange
+
+c.diff = {
+    add = c.green,
+    delete = c.red,
+    change = c.yellow,
+    text = c.fg,
 }
 
--- colors.git = {
+-- c.git = {
 --   change = "#6183bb",
 --   add = "#449dab",
 --   delete = "#914c54",
 --   conflict = "#bb7a61",
---   ignore = colors.dark3
+--   ignore = c.dark3
 -- }
 
-colors.black = util.darken(colors.bg, 0.8, "#000000")
-colors.border_highlight = colors.blue
-colors.border = colors.fg
+c.border_highlight = c.blue
+c.border = c.fg
 
--- -- Popups and statusline always get a dark background
--- colors.bg_popup = colors.bg_dark
--- colors.bg_statusline = colors.bg_dark
-
--- -- Sidebar and Floats are configurable
--- colors.bg_sidebar = (config.transparentSidebar and colors.none) or config.darkSidebar and colors.bg_dark or colors.bg
--- colors.bg_float = config.darkFloat and colors.bg_dark or colors.bg
-
--- colors.bg_visual = util.darken(colors.blue0, 0.7)
--- colors.bg_search = colors.blue0
--- colors.fg_sidebar = colors.fg_dark
-
-return colors
+return c

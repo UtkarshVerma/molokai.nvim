@@ -1,7 +1,6 @@
 local c = require("molokai.colors")
-local util = require("molokai.util")
 
 return {
-    IndentBlanklineChar = { fg = util.lighten(c.bg, 0.8) },
-    IndentBlanklineContextChar = { fg = util.lighten(c.bg, 0.6) },
+    IndentBlanklineChar = { fg = c.bg_gray, bg = c.none },
+    IndentBlanklineContextChar = { fg = c.gray, bg = c.none },
 }

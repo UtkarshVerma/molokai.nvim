@@ -1,27 +1,29 @@
-local colors = require("molokai.colors")
+local c = require("molokai.colors")
+
+local a_bg = c.bg_gray
+local b_bg = c.bg_highlight
+local c_bg = c.bg_float
 
 local molokai = {
     normal = {
-        a = { bg = colors.cyan, fg = colors.bg },
-        b = { bg = colors.red, fg = colors.bg },
-        c = { bg = colors.bg_highlight, fg = colors.orange },
+        a = { fg = c.cyan, bg = a_bg },
+        b = { fg = c.purple, bg = b_bg },
+        c = { fg = c.gray, bg = c_bg },
     },
     insert = {
-        a = { bg = colors.green, fg = colors.bg },
+        a = { fg = c.green, bg = a_bg },
     },
     command = {
-        a = { bg = colors.yellow, fg = colors.bg },
+        a = { fg = c.orange, bg = a_bg },
     },
     visual = {
-        a = { bg = colors.purple, fg = colors.black },
+        a = { fg = c.purple, bg = a_bg },
     },
     replace = {
-        a = { bg = colors.blue, fg = colors.black },
+        a = { fg = c.blue, bg = a_bg },
     },
     inactive = {
-        a = { bg = colors.bg, fg = colors.red },
-        b = { bg = colors.red, fg = colors.fg, gui = "bold" },
-        c = { bg = colors.bg_highlight, fg = colors.bg },
+        c = { fg = c.gray, bg = c_bg },
     },
 }
 

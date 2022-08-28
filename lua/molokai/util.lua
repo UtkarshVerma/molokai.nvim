@@ -25,11 +25,11 @@ end
 ---@param bg string background color
 ---@param alpha number number between 0 and 1. 0 results in bg, 1 results in fg
 function util.blend(fg, bg, alpha)
-    bg = hexToRgb(bg)
-    fg = hexToRgb(fg)
+    local bg_rgb = hexToRgb(bg)
+    local fg_rgb = hexToRgb(fg)
 
     local blendChannel = function(i)
-        local ret = (alpha * fg[i] + ((1 - alpha) * bg[i]))
+        local ret = (alpha * fg_rgb[i] + ((1 - alpha) * bg_rgb[i]))
         return math.floor(math.min(math.max(0, ret), 255) + 0.5)
     end
 
@@ -129,7 +129,6 @@ function util.onColorScheme()
     end
 end
 
----@param config Config
 function util.autocmds()
     vim.cmd([[augroup molokai]])
     vim.cmd([[  autocmd!]])
@@ -218,37 +217,6 @@ function util.load(theme)
     vim.defer_fn(function()
         util.syntax(theme.defer)
     end, 100)
-end
-
----@param config Config
----@param colors ColorScheme
-function util.color_overrides(colors, config)
-    if type(config.colors) == "table" then
-        for key, value in pairs(config.colors) do
-            if not colors[key] then
-                error("Color " .. key .. " does not exist")
-            end
-
-            -- Patch: https://github.com/ful1e5/onedark.nvim/issues/6
-            if type(colors[key]) == "table" then
-                util.color_overrides(colors[key], { colors = value })
-            else
-                if value:lower() == "none" then
-                    -- set to none
-                    colors[key] = "NONE"
-                elseif string.sub(value, 1, 1) == "#" then
-                    -- hex override
-                    colors[key] = value
-                else
-                    -- another group
-                    if not colors[value] then
-                        error("Color " .. value .. " does not exist")
-                    end
-                    colors[key] = colors[value]
-                end
-            end
-        end
-    end
 end
 
 function util.light(brightness)
