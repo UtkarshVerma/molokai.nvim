@@ -1,6 +1,11 @@
-local c = require("molokai.colors")
+local M = {}
 
-return {
+---@param theme Theme
+---@return Highlights
+function M.setup(theme)
+  local cfg = theme.config
+  local c = theme.colors
+  return {
     -- These groups are not listed as default vim groups,
     -- but they are defacto standard group names for syntax highlighting.
     -- commented out groups should chain up to their "preferred" group by
@@ -14,15 +19,15 @@ return {
     -- Boolean       = { }, --  a boolean constant: TRUE, false
     -- Float         = { }, --    a floating point constant: 2.3e10
 
-    Identifier = { fg = c.fg }, -- (preferred) any variable name
-    Function = { fg = c.green }, -- function name (also: methods for classes)
+    Identifier = { fg = c.fg, style = cfg.variableStyle }, -- (preferred) any variable name
+    Function = { fg = c.green, style = cfg.functionStyle }, -- function name (also: methods for classes)
 
     Statement = { fg = c.red }, -- (preferred) any statement
     -- Conditional   = { }, --  if, then, else, endif, switch, etc.
     -- Repeat        = { }, --   for, do, while, etc.
     -- Label         = { }, --    case, default, etc.
     Operator = { fg = c.red }, -- "sizeof", "+", "*", etc.
-    Keyword = { fg = c.red }, --  any other keyword
+    Keyword = { fg = c.red, style = cfg.keywordStyle }, --  any other keyword
     Exception = { fg = c.red }, --  try, catch, throw
 
     PreProc = { fg = c.red }, -- (preferred) generic Preprocessor
@@ -42,4 +47,7 @@ return {
     -- Delimiter     = { }, --  character that needs attention
     -- SpecialComment= { }, -- special things inside a comment
     -- Debug         = { }, --    debugging statements
-}
+  }
+end
+
+return M

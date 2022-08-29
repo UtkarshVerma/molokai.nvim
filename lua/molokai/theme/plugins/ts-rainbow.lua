@@ -1,6 +1,11 @@
-local c = require("molokai.colors")
+local M = {}
 
-return {
+---@param theme Theme
+---@return Highlights
+function M.setup(theme)
+  local c = theme.colors
+
+  return {
     RainbowCol1 = { fg = c.orange },
     RainbowCol2 = { fg = c.purple },
     RainbowCol3 = { fg = c.cyan },
@@ -8,4 +13,7 @@ return {
     RainbowCol5 = { fg = c.purple },
     RainbowCol6 = { fg = c.cyan },
     RainbowCol7 = { fg = c.purple },
-}
+  }
+end
+
+return M

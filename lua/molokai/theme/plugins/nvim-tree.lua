@@ -1,6 +1,10 @@
-local c = require("molokai.colors")
+local M = {}
 
-return {
+---@param theme Theme
+---@return Highlights
+function M.setup(theme)
+  local c = theme.colors
+  return {
     -- NvimTreeNormal = { fg = c.fg_sidebar, bg = c.bg_sidebar },
     -- NvimTreeNormalNC = { fg = c.fg_sidebar, bg = c.bg_sidebar },
     -- NvimTreeRootFolder = { fg = c.blue, style = "bold" },
@@ -12,4 +16,7 @@ return {
     -- NvimTreeImageFile = { fg = c.fg_sidebar },
     -- NvimTreeSymlink = { fg = c.blue },
     -- -- NvimTreeFolderName= { fg = c.fg_float },
-}
+  }
+end
+
+return M

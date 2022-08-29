@@ -1,4 +1,14 @@
-local c = {
+local util = require("molokai.util")
+
+local M = {}
+
+---@param config? Config
+---@return ColorScheme
+function M.setup(config)
+  config = config or require("molokai.config")
+
+  ---@class ColorScheme
+  local colors = {
     none = "NONE",
     bg = "#1b1d1e",
     red = "#f92672",
@@ -12,39 +22,45 @@ local c = {
     gray = "#666666",
 
     comment = "#7e8e91",
-}
+  }
+  util.bg = colors.bg
+  util.fg = colors.fg
 
-local util = require("molokai.util")
-util.bg = c.bg
-util.fg = c.fg
+  colors.diff = {
+    add = colors.green,
+    delete = colors.red,
+    change = colors.yellow,
+    text = colors.fg,
+  }
 
-c.bg_float = util.lighten(c.bg, 0.95)
-c.bg_highlight = util.lighten(c.bg_float, 0.93)
-c.bg_gray = util.lighten(c.bg_highlight, 0.9)
+  colors.border_highlight = colors.cyan
+  colors.border = colors.fg
 
-c.fg_alt = util.darken(c.fg, 0.8)
+  -- Shades of gray from darkest to lightest
+  colors.bg_gray1 = util.lighten(colors.bg, 0.95)
+  colors.bg_gray2 = util.lighten(colors.bg_gray1, 0.95)
+  colors.bg_gray3 = util.lighten(colors.bg_gray2, 0.95)
+  colors.bg_gray4 = util.lighten(colors.bg_gray3, 0.95)
+  colors.bg_gray5 = util.lighten(colors.bg_gray4, 0.95)
 
-c.info = c.cyan
-c.hint = c.purple
-c.error = "#f44747"
-c.warning = c.orange
+  -- Sidebar and Floats are configurable
+  colors.bg_sidebar = (config.transparentSidebar and colors.none) or config.darkSidebar and colors.bg_gray2 or colors.bg
+  colors.bg_float = config.darkFloat and colors.bg_gray2 or colors.bg
 
-c.diff = {
-    add = c.green,
-    delete = c.red,
-    change = c.yellow,
-    text = c.fg,
-}
+  colors.bg_cursorline = colors.bg_gray1
+  colors.bg_popup = colors.bg_gray2
+  colors.bg_highlight = colors.bg_gray3
+  colors.bg_visual = colors.bg_gray4
+  colors.fg_alt = util.darken(colors.fg, 0.8)
 
--- c.git = {
---   change = "#6183bb",
---   add = "#449dab",
---   delete = "#914c54",
---   conflict = "#bb7a61",
---   ignore = c.dark3
--- }
+  colors.info = colors.cyan
+  colors.hint = colors.purple
+  colors.error = "#f44747"
+  colors.warning = colors.orange
 
-c.border_highlight = c.blue
-c.border = c.fg
+  util.color_overrides(colors, config)
 
-return c
+  return colors
+end
+
+return M

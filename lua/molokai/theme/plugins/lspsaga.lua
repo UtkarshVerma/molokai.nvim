@@ -1,10 +1,14 @@
-local c = require("molokai.colors")
+local M = {}
 
-return {
+---@param theme Theme
+function M.setup(theme)
+  local util = require("molokai.util")
+  local c = theme.colors
+  return {
     DiagnosticWarning = { link = "DiagnosticWarn" },
     DiagnosticInformation = { link = "DiagnosticInfo" },
-    LspFloatWinNormal = { bg = c.none },
-    LspFloatWinBorder = { fg = c.border },
+    -- LspFloatWinNormal = { bg = c.none },
+    -- LspFloatWinBorder = { fg = c.border },
     -- LspSagaBorderTitle = { fg = c.cyan },
     -- LspSagaHoverBorder = { fg = c.blue },
     -- LspSagaRenameBorder = { fg = c.green },
@@ -19,4 +23,7 @@ return {
     -- DefinitionIcon = { fg = c.blue },
     -- ReferencesIcon = { fg = c.blue },
     -- TargetWord = { fg = c.cyan },
-}
+  }
+end
+
+return M

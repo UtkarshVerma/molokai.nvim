@@ -1,6 +1,10 @@
-local c = require("molokai.colors")
+local M = {}
 
-return {
+---@param theme Theme
+---@return Highlights
+function M.setup(theme)
+  local c = theme.colors
+  return {
     -- htmlH1 = { fg = c.purple, style = "bold" },
     -- htmlH2 = { fg = c.blue, style = "bold" },
 
@@ -17,4 +21,7 @@ return {
     markdownH1 = { fg = c.purple, style = "bold" },
     markdownH2 = { fg = c.blue, style = "bold" },
     markdownLinkText = { fg = c.blue, style = "underline" },
-}
+  }
+end
+
+return M

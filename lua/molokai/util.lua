@@ -1,6 +1,4 @@
 local hsluv = require("molokai.hsluv")
-local config = require("molokai.config")
-
 local util = {}
 
 util.colorsUsed = {}
@@ -75,6 +73,16 @@ function util.randomColor(color)
     return color
 end
 
+function util.getColor(color)
+    if vim.o.background == "dark" then
+        return color
+    end
+    if not util.colorCache[color] then
+        util.colorCache[color] = util.invertColor(color)
+    end
+    return util.colorCache[color]
+end
+
 -- local ns = vim.api.nvim_create_namespace("molokai")
 function util.highlight(group, color)
     if color.fg then
@@ -129,7 +137,8 @@ function util.onColorScheme()
     end
 end
 
-function util.autocmds()
+---@param config Config
+function util.autocmds(config)
     vim.cmd([[augroup molokai]])
     vim.cmd([[  autocmd!]])
     vim.cmd([[  autocmd ColorScheme * lua require("molokai.util").onColorScheme()]])
@@ -168,11 +177,11 @@ end
 ---@param colors ColorScheme
 function util.terminal(colors)
     -- dark
-    vim.g.terminal_color_0 = colors.black
-    vim.g.terminal_color_8 = colors.terminal_black
+    vim.g.terminal_color_0 = colors.bg
+    vim.g.terminal_color_8 = colors.gray
 
     -- light
-    vim.g.terminal_color_7 = colors.fg_dark
+    vim.g.terminal_color_7 = colors.fg
     vim.g.terminal_color_15 = colors.fg
 
     -- colors
@@ -212,11 +221,42 @@ function util.load(theme)
     util.syntax(theme.base)
     util.syntax(theme.plugins)
     util.terminal(theme.colors)
-    util.autocmds()
+    util.autocmds(theme.config)
 
     vim.defer_fn(function()
         util.syntax(theme.defer)
     end, 100)
+end
+
+---@param config Config
+---@param colors ColorScheme
+function util.color_overrides(colors, config)
+    if type(config.colors) == "table" then
+        for key, value in pairs(config.colors) do
+            if not colors[key] then
+                error("Color " .. key .. " does not exist")
+            end
+
+            -- Patch: https://github.com/ful1e5/onedark.nvim/issues/6
+            if type(colors[key]) == "table" then
+                util.color_overrides(colors[key], { colors = value })
+            else
+                if value:lower() == "none" then
+                    -- set to none
+                    colors[key] = "NONE"
+                elseif string.sub(value, 1, 1) == "#" then
+                    -- hex override
+                    colors[key] = value
+                else
+                    -- another group
+                    if not colors[value] then
+                        error("Color " .. value .. " does not exist")
+                    end
+                    colors[key] = colors[value]
+                end
+            end
+        end
+    end
 end
 
 function util.light(brightness)

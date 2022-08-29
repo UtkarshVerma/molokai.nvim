@@ -1,6 +1,10 @@
-local c = require("molokai.colors")
+local M = {}
 
-return {
+---@param theme Theme
+---@return Highlights
+function M.setup(theme)
+  local c = theme.colors
+  return {
     -- -- These groups are for the native LSP client. Some other LSP clients may
     -- -- use these groups, or use their own. Consult your LSP client's
     -- -- documentation.
@@ -10,4 +14,7 @@ return {
 
     -- LspSignatureActiveParameter = { fg = c.orange },
     -- LspCodeLens = { fg = c.comment },
-}
+  }
+end
+
+return M

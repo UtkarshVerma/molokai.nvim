@@ -1,8 +1,8 @@
-local c = require("molokai.colors")
+local c = require("molokai.colors").setup()
 
-local a_bg = c.bg_gray
-local b_bg = c.bg_highlight
-local c_bg = c.bg_float
+local a_bg = c.bg_gray5
+local b_bg = c.bg_gray3
+local c_bg = c.bg_gray1
 
 local molokai = {
     normal = {
