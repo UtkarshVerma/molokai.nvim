@@ -3,51 +3,53 @@ local M = {}
 ---@param theme Theme
 ---@return Highlights
 function M.setup(theme)
-  local cfg = theme.config
-  local c = theme.colors
-  return {
-    -- These groups are not listed as default vim groups,
-    -- but they are defacto standard group names for syntax highlighting.
-    -- commented out groups should chain up to their "preferred" group by
-    -- default,
-    -- Uncomment and edit if you want more specific syntax highlighting.
+    local cfg = theme.config
+    local c = theme.colors
+    return {
+        -- These groups are not listed as default vim groups,
+        -- but they are defacto standard group names for syntax highlighting.
+        -- commented out groups should chain up to their "preferred" group by
+        -- default,
+        -- Uncomment and edit if you want more specific syntax highlighting.
 
-    Constant = { fg = c.purple }, -- (preferred) any constant
-    String = { fg = c.yellow }, -- a string constant: "this is a string"
-    Character = { fg = c.yellow }, --  a character constant: 'c', '\n'
-    -- Number        = { }, --   a number constant: 234, 0xff
-    -- Boolean       = { }, --  a boolean constant: TRUE, false
-    -- Float         = { }, --    a floating point constant: 2.3e10
+        Constant  = { fg = c.purple }, -- (preferred) any constant
+        String    = { fg = c.yellow }, -- a string constant: "this is a string"
+        Character = { fg = c.yellow }, --  a character constant: 'c', '\n'
+        Number    = { fg = c.purple }, --   a number constant: 234, 0xff
+        -- Boolean       = { }, --  a boolean constant: TRUE, false
+        -- Float         = { }, --    a floating point constant: 2.3e10
 
-    Identifier = { fg = c.fg, style = cfg.variableStyle }, -- (preferred) any variable name
-    Function = { fg = c.green, style = cfg.functionStyle }, -- function name (also: methods for classes)
+        Identifier = { fg = c.fg, style = cfg.variableStyle }, -- (preferred) any variable name
+        Function = { fg = c.green, style = cfg.functionStyle }, -- function name (also: methods for classes)
 
-    Statement = { fg = c.red }, -- (preferred) any statement
-    -- Conditional   = { }, --  if, then, else, endif, switch, etc.
-    -- Repeat        = { }, --   for, do, while, etc.
-    -- Label         = { }, --    case, default, etc.
-    Operator = { fg = c.red }, -- "sizeof", "+", "*", etc.
-    Keyword = { fg = c.red, style = cfg.keywordStyle }, --  any other keyword
-    Exception = { fg = c.red }, --  try, catch, throw
+        Statement = { fg = c.red }, -- (preferred) any statement
+        -- Conditional   = { }, --  if, then, else, endif, switch, etc.
+        -- Repeat        = { }, --   for, do, while, etc.
+        -- Label         = { }, --    case, default, etc.
+        Operator = { fg = c.red }, -- "sizeof", "+", "*", etc.
+        Keyword = { fg = c.red, style = cfg.keywordStyle }, --  any other keyword
+        Exception = { fg = c.red }, --  try, catch, throw
 
-    PreProc = { fg = c.red }, -- (preferred) generic Preprocessor
-    -- Include       = { }, --  preprocessor #include
-    -- Define        = { }, --  preprocessor #define
-    -- Macro         = { }, --  same as Define
-    -- PreCondit     = { }, --  preprocessor #if, #else, #endif, etc.
+        PreProc = { fg = c.red }, -- (preferred) generic Preprocessor
+        -- Include       = { }, --  preprocessor #include
+        -- Define        = { }, --  preprocessor #define
+        Macro   = { fg = c.green }, --  same as Define
+        -- PreCondit     = { }, --  preprocessor #if, #else, #endif, etc.
 
-    Type = { fg = c.cyan, style = "italic" }, -- (preferred) int, long, char, etc.
-    -- StorageClass  = { }, -- static, register, volatile, etc.
-    -- Structure     = { }, --  struct, union, enum, etc.
-    -- Typedef       = { }, --  A typedef
+        Type         = { fg = c.cyan, style = "italic" }, -- (preferred) int, long, char, etc.
+        StorageClass = { fg = c.red }, -- static, register, volatile, etc.
+        -- Structure     = { }, --  struct, union, enum, etc.
+        -- Typedef       = { }, --  A typedef
 
-    Special = { fg = c.blue1 }, -- (preferred) any special symbol
-    -- SpecialChar   = { }, --  special character in a constant
-    -- Tag           = { }, --    you can use CTRL-] on this
-    -- Delimiter     = { }, --  character that needs attention
-    -- SpecialComment= { }, -- special things inside a comment
-    -- Debug         = { }, --    debugging statements
-  }
+        Comment = { fg = c.comment, style = cfg.commentStyle }, -- any comment
+
+        Special     = { fg = c.orange }, -- (preferred) any special symbol
+        SpecialChar = { fg = c.purple }, --  special character in a constant
+        -- Tag           = { }, --    you can use CTRL-] on this
+        Delimiter   = { fg = c.fg }, --  character that needs attention
+        -- SpecialComment= { }, -- special things inside a comment
+        -- Debug         = { }, --    debugging statements
+    }
 end
 
 return M

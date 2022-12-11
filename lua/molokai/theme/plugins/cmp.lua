@@ -11,8 +11,8 @@ function M.setup(theme)
 
     CmpItemAbbr = { fg = c.fg, bg = c.none },
     CmpItemAbbrDeprecated = { fg = c.fg_alt, bg = c.none, style = "strikethrough" },
-    CmpItemAbbrMatch = { fg = c.purple, bg = c.none },
-    CmpItemAbbrMatchFuzzy = { fg = c.purple, bg = c.none },
+    CmpItemAbbrMatch = { fg = c.cyan, bg = c.none },
+    CmpItemAbbrMatchFuzzy = { fg = c.cyan, bg = c.none },
     CmpItemKindDefault = { fg = c.fg_alt, bg = c.none },
     CmpItemMenu = { fg = c.comment, bg = c.none },
     CmpItemKindKeyword = { fg = c.cyan, bg = c.none },

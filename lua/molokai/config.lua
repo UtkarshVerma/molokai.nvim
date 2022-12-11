@@ -25,6 +25,7 @@ local config = {
   dev = opt("dev", false),
   darkFloat = opt("dark_float", true),
   darkSidebar = opt("dark_sidebar", true),
+  transparentFloat = opt("transparent_float", false),
   transparentSidebar = opt("transparent_sidebar", false),
 }
 
