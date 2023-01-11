@@ -10,7 +10,6 @@ M.default = {
   fg_gutter = "#808080",
   dark3 = "#464741", -- TODO
   comment = "#7e8e91",
-  dark5 = "#c2c2bf",
   blue = "#819aff",
   cyan = "#66d9ef",
   magenta = "#f92672",

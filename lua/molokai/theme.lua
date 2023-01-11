@@ -231,6 +231,7 @@ function M.setup()
     -- TSInclude           = { };    -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
     -- ["@keyword"] = { fg = c.purple, style = options.styles.keywords }, -- For keywords that don't fall in previous categories.
     ["@keyword.function"] = { fg = c.magenta, style = options.styles.functions }, -- For keywords used to define a fuction.
+    ["@keyword.return"] = { fg = c.magenta, style = options.styles.keywords }, -- For keywords used to define a fuction.
     ["@label"] = { fg = c.blue }, -- For labels: `label:` in C and `:label:` in Lua.
     -- TSMethod            = { };    -- For method calls and definitions.
     -- TSNamespace         = { };    -- For identifiers referring to modules and namespaces.
@@ -543,7 +544,8 @@ function M.setup()
     CmpItemKindTypeParameter = { fg = c.green, bg = c.none },
     CmpItemKindEnumMember = { fg = c.green, bg = c.none },
     CmpItemKindOperator = { fg = c.green, bg = c.none },
-    CmpItemKindSnippet = { fg = c.dark5, bg = c.none },
+
+    CmpItemKindSnippet = { fg = c.purple, bg = c.none },
 
     -- navic
     NavicIconsFile = { fg = c.fg, bg = c.none },
