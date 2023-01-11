@@ -25,12 +25,6 @@ M.default = {
   warning = "#cd9731",
   info = "#6796e6",
   hint = "#b267e6",
-
-  git = {
-    change = "#6183bb",
-    add = "#449dab",
-    delete = "#914c54",
-  },
 }
 
 ---@return ColorScheme
@@ -52,6 +46,12 @@ function M.setup(opts)
     delete = util.darken(colors.red, 0.8),
   }
 
+  colors.git = {
+    change = colors.purple,
+    add = colors.green,
+    delete = colors.magenta,
+  }
+
   colors.diff = {
     add = util.darken(colors.green, 0.3),
     delete = util.darken(colors.red, 0.25),
@@ -61,7 +61,6 @@ function M.setup(opts)
 
   colors.fg_dark = util.darken(colors.fg, 0.6)
 
-  colors.git.ignore = colors.dark3
   colors.bg_highlight = util.lighten(colors.bg, 0.91)
   colors.bg_visual = util.lighten(colors.bg, 0.85)
   colors.bg_light = util.lighten(colors.bg, 0.95)

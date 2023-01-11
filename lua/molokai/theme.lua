@@ -299,7 +299,7 @@ function M.setup()
     diffNewFile = { fg = c.orange },
     diffFile = { fg = c.blue },
     diffLine = { fg = c.comment },
-    diffIndexLine = { fg = c.magenta },
+    diffIndexLine = { fg = c.cyan },
 
     -- Neogit
     NeogitBranch = { fg = c.magenta },
