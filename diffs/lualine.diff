@@ -1,0 +1,78 @@
+1,8c1,9
+< local colors = require("tokyonight.colors").setup({ transform = true })
+< local config = require("tokyonight.config").options
+< 
+< local tokyonight = {}
+< 
+< tokyonight.normal = {
+<   a = { bg = colors.blue, fg = colors.black },
+<   b = { bg = colors.fg_gutter, fg = colors.blue },
+---
+> local colors = require("molokai.colors").setup({ transform = true })
+> local util = require("molokai.util")
+> local config = require("molokai.config").options
+> 
+> local molokai = {}
+> 
+> molokai.normal = {
+>   a = { bg = colors.blue, fg = colors.bg },
+>   b = { bg = colors.bg_light, fg = colors.blue },
+12,14c13,15
+< tokyonight.insert = {
+<   a = { bg = colors.green, fg = colors.black },
+<   b = { bg = colors.fg_gutter, fg = colors.green },
+---
+> molokai.insert = {
+>   a = { bg = colors.green, fg = colors.bg },
+>   b = { bg = colors.bg_light, fg = colors.green },
+17,19c18,20
+< tokyonight.command = {
+<   a = { bg = colors.yellow, fg = colors.black },
+<   b = { bg = colors.fg_gutter, fg = colors.yellow },
+---
+> molokai.command = {
+>   a = { bg = colors.yellow, fg = colors.bg },
+>   b = { bg = colors.bg_light, fg = colors.yellow },
+22,24c23,25
+< tokyonight.visual = {
+<   a = { bg = colors.magenta, fg = colors.black },
+<   b = { bg = colors.fg_gutter, fg = colors.magenta },
+---
+> molokai.visual = {
+>   a = { bg = colors.orange, fg = colors.bg },
+>   b = { bg = colors.bg_light, fg = colors.orange },
+27,29c28,30
+< tokyonight.replace = {
+<   a = { bg = colors.red, fg = colors.black },
+<   b = { bg = colors.fg_gutter, fg = colors.red },
+---
+> molokai.replace = {
+>   a = { bg = colors.magenta, fg = colors.bg },
+>   b = { bg = colors.bg_light, fg = colors.magenta },
+32,34c33,35
+< tokyonight.terminal = {
+<   a = {bg = colors.green1, fg = colors.black },
+<   b = {bg = colors.fg_gutter, fg=colors.green1 },
+---
+> molokai.terminal = {
+>   a = { bg = colors.green, fg = colors.bg },
+>   b = { bg = colors.bg_light, fg = colors.green },
+37c38
+< tokyonight.inactive = {
+---
+> molokai.inactive = {
+39,40c40,41
+<   b = { bg = colors.bg_statusline, fg = colors.fg_gutter, gui = "bold" },
+<   c = { bg = colors.bg_statusline, fg = colors.fg_gutter },
+---
+>   b = { bg = colors.bg_statusline, fg = colors.bg_light, gui = "bold" },
+>   c = { bg = colors.bg_statusline, fg = colors.bg_light },
+44c45
+<   for _, mode in pairs(tokyonight) do
+---
+>   for _, mode in pairs(molokai) do
+49c50
+< return tokyonight
+---
+> return molokai
+\ No newline at end of file

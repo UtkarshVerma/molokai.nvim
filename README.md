@@ -2,7 +2,7 @@
 
 A dark Neovim theme written in Lua ported from the Visual Studio Code [Dark Molokai](https://github.com/nonylene/vscode-dark-molokai-theme) theme.
 
-> This repo heavily borrows source code from the awesome [TokyoNight](https://github.com/folke/tokyonight.nvim) theme for Neovim.
+> This repo heavily borrows source code from the awesome [molokai](https://github.com/UtkarshVerma/molokai.nvim) theme for Neovim.
 
 ## ✨ Features
 
@@ -83,28 +83,28 @@ require('lualine').setup {
 
 | Option                              | Default   | Description                                                                                                                                                     |
 | ----------------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| tokyonight_terminal_colors          | `true`    | Configure the colors used when opening a `:terminal` in Neovim                                                                                                  |
-| tokyonight_italic_comments          | `true`    | Make comments italic                                                                                                                                            |
-| tokyonight_italic_keywords          | `true`    | Make keywords italic                                                                                                                                            |
-| tokyonight_italic_functions         | `false`   | Make functions italic                                                                                                                                           |
-| tokyonight_italic_variables         | `false`   | Make variables and identifiers italic                                                                                                                           |
-| tokyonight_transparent              | `false`   | Enable this to disable setting the background color                                                                                                             |
-| tokyonight_hide_inactive_statusline | `false`   | Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**. |
-| tokyonight_sidebars                 | `{}`      | Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`                                                      |
-| tokyonight_transparent_sidebar      | `false`   | Sidebar like windows like `NvimTree` get a transparent background                                                                                               |
-| tokyonight_dark_sidebar             | `true`    | Sidebar like windows like `NvimTree` get a darker background                                                                                                    |
-| tokyonight_dark_float               | `true`    | Float windows like the lsp diagnostics windows get a darker background.                                                                                         |
-| tokyonight_colors                   | `{}`      | You can override specific color groups to use other groups or a hex color                                                                                       |
-| tokyonight_day_brightness           | `0.3`     | Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors                                                  |
-| tokyonight_lualine_bold             | `false`   | When `true`, section headers in the lualine theme will be bold                                                                                                  |
+| molokai_terminal_colors          | `true`    | Configure the colors used when opening a `:terminal` in Neovim                                                                                                  |
+| molokai_italic_comments          | `true`    | Make comments italic                                                                                                                                            |
+| molokai_italic_keywords          | `true`    | Make keywords italic                                                                                                                                            |
+| molokai_italic_functions         | `false`   | Make functions italic                                                                                                                                           |
+| molokai_italic_variables         | `false`   | Make variables and identifiers italic                                                                                                                           |
+| molokai_transparent              | `false`   | Enable this to disable setting the background color                                                                                                             |
+| molokai_hide_inactive_statusline | `false`   | Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**. |
+| molokai_sidebars                 | `{}`      | Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`                                                      |
+| molokai_transparent_sidebar      | `false`   | Sidebar like windows like `NvimTree` get a transparent background                                                                                               |
+| molokai_dark_sidebar             | `true`    | Sidebar like windows like `NvimTree` get a darker background                                                                                                    |
+| molokai_dark_float               | `true`    | Float windows like the lsp diagnostics windows get a darker background.                                                                                         |
+| molokai_colors                   | `{}`      | You can override specific color groups to use other groups or a hex color                                                                                       |
+| molokai_day_brightness           | `0.3`     | Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors                                                  |
+| molokai_lualine_bold             | `false`   | When `true`, section headers in the lualine theme will be bold                                                                                                  |
 
 ```lua
 -- Example config in Lua
-vim.g.tokyonight_italic_functions = true
-vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
+vim.g.molokai_italic_functions = true
+vim.g.molokai_sidebars = { "qf", "vista_kind", "terminal", "packer" }
 
 -- Change the "hint" color to the "orange" color, and make the "error" color bright red
-vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
+vim.g.molokai_colors = { hint = "orange", error = "#ff0000" }
 
 -- Load the colorscheme
 vim.cmd[[colorscheme molokai]]
@@ -112,18 +112,18 @@ vim.cmd[[colorscheme molokai]]
 
 ```vim
 " Example config in VimScript
-let g:tokyonight_style = "night"
-let g:tokyonight_italic_functions = 1
-let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
+let g:molokai_style = "night"
+let g:molokai_italic_functions = 1
+let g:molokai_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
 
 " Change the "hint" color to the "orange" color, and make the "error" color bright red
-let g:tokyonight_colors = {
+let g:molokai_colors = {
   \ 'hint': 'orange',
   \ 'error': '#ff0000'
 \ }
 
 " Load the colorscheme
-colorscheme tokyonight
+colorscheme molokai
 ```
 
 ### Making `undercurls` work properly in **Tmux**

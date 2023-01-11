@@ -1,0 +1,32 @@
+1c1
+< local ts = require("tokyonight.treesitter")
+---
+> local ts = require("molokai.treesitter")
+40c40
+<   local hsluv = require("tokyonight.hsluv")
+---
+>   local hsluv = require("molokai.hsluv")
+74,75c74,75
+<   vim.cmd([[autocmd! TokyoNight]])
+<   vim.cmd([[augroup! TokyoNight]])
+---
+>   vim.cmd([[autocmd! molokai]])
+>   vim.cmd([[augroup! molokai]])
+80c80
+<   vim.cmd([[augroup TokyoNight]])
+---
+>   vim.cmd([[augroup molokai]])
+82c82
+<   vim.cmd([[  autocmd ColorSchemePre * lua require("tokyonight.util").onColorScheme()]])
+---
+>   vim.cmd([[  autocmd ColorSchemePre * lua require("molokai.util").onColorScheme()]])
+118,119c118,119
+<   vim.g.terminal_color_0 = colors.black
+<   vim.g.terminal_color_8 = colors.terminal_black
+---
+>   vim.g.terminal_color_0 = colors.bg
+>   vim.g.terminal_color_8 = colors.bg_light
+180c180
+<   vim.g.colors_name = "tokyonight"
+---
+>   vim.g.colors_name = "molokai"

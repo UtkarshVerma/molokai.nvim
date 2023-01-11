@@ -1,32 +1,54 @@
--- shim vim for kitty and other generators
-vim = vim or { g = {}, o = {} }
-
-local function opt(key, default)
-  key = "molokai_" .. key
-  if vim.g[key] == nil then
-    return default
-  end
-  if vim.g[key] == 0 then
-    return false
-  end
-  return vim.g[key]
-end
+local M = {}
 
 ---@class Config
-local config = {
-  transparent = opt("transparent", false),
-  commentStyle = opt("italic_comments", true) and "italic" or "NONE",
-  keywordStyle = opt("italic_keywords", true) and "italic" or "NONE",
-  functionStyle = opt("italic_functions", false) and "italic" or "NONE",
-  variableStyle = opt("italic_variables", false) and "italic" or "NONE",
-  hideInactiveStatusline = opt("hide_inactive_statusline", false),
-  sidebars = opt("sidebars", {}),
-  colors = opt("colors", {}),
-  dev = opt("dev", false),
-  darkFloat = opt("dark_float", true),
-  darkSidebar = opt("dark_sidebar", true),
-  transparentFloat = opt("transparent_float", false),
-  transparentSidebar = opt("transparent_sidebar", false),
+---@field on_colors fun(colors: ColorScheme)
+---@field on_highlights fun(highlights: Highlights, colors: ColorScheme)
+local defaults = {
+  transparent = false, -- Enable this to disable setting the background color
+  terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
+  styles = {
+    -- Style to be applied to different syntax groups
+    -- Value is any valid attr-list value for `:help nvim_set_hl`
+    comments = { italic = true },
+    keywords = { italic = true },
+    types = { underline = true },
+    functions = {},
+    variables = {},
+    -- Background styles. Can be "dark", "transparent" or "normal"
+    sidebars = "dark", -- style for sidebars, see below
+    floats = "dark", -- style for floating windows
+  },
+  sidebars = { "qf", "help" }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
+  hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
+  dim_inactive = false, -- dims inactive windows
+  lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
+
+  --- You can override specific color groups to use other groups or a hex color
+  --- function will be called with a ColorScheme table
+  ---@param colors ColorScheme
+  on_colors = function(colors) end,
+
+  --- You can override specific highlights to use other groups or a hex color
+  --- function will be called with a Highlights and ColorScheme table
+  ---@param highlights Highlights
+  ---@param colors ColorScheme
+  on_highlights = function(highlights, colors) end,
+  use_background = true, -- can be light/dark/auto. When auto, background will be set to vim.o.background
 }
 
-return config
+---@type Config
+M.options = {}
+
+---@param options Config|nil
+function M.setup(options)
+  M.options = vim.tbl_deep_extend("force", {}, defaults, options or {})
+end
+
+---@param options Config|nil
+function M.extend(options)
+  M.options = vim.tbl_deep_extend("force", {}, M.options or defaults, options or {})
+end
+
+M.setup()
+
+return M

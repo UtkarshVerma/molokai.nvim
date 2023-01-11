@@ -1,0 +1,307 @@
+1,2c1,2
+< local util = require("tokyonight.util")
+< local colors = require("tokyonight.colors")
+---
+> local util = require("molokai.util")
+> local colors = require("molokai.colors")
+16c16
+<   local config = require("tokyonight.config")
+---
+>   local config = require("molokai.config")
+28c28
+<     Foo = { bg = c.magenta2, fg = c.magenta2 },
+---
+>     Foo = { bg = c.magenta, fg = c.magenta },
+53c53
+<     Substitute = { bg = c.red, fg = c.black }, -- |:substitute| replacement text highlighting
+---
+>     Substitute = { bg = c.magenta, fg = c.bg }, -- |:substitute| replacement text highlighting
+67,70c67,70
+<     Pmenu = { bg = c.bg_popup, fg = c.fg }, -- Popup menu: normal item.
+<     PmenuSel = { bg = util.darken(c.fg_gutter, 0.8) }, -- Popup menu: selected item.
+<     PmenuSbar = { bg = util.lighten(c.bg_popup, 0.95) }, -- Popup menu: scrollbar.
+<     PmenuThumb = { bg = c.fg_gutter }, -- Popup menu: Thumb of the scrollbar.
+---
+>     Pmenu = { bg = c.bg_popup }, -- Popup menu: normal item.
+>     PmenuSel = { bg = c.bg_light }, -- Popup menu: selected item.
+>     PmenuSbar = { bg = c.bg_popup }, -- Popup menu: scrollbar.
+>     PmenuThumb = { bg = c.dark3 }, -- Popup menu: Thumb of the scrollbar.
+73,74c73,74
+<     Search = { bg = c.bg_search, fg = c.fg }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
+<     IncSearch = { bg = c.orange, fg = c.black }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+---
+>     Search = { bg = c.bg_search }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
+>     IncSearch = { bg = c.orange, fg = c.bg }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+85c85
+<     TabLineSel = { fg = c.black, bg = c.blue }, -- tab pages line, active tab page label
+---
+>     TabLineSel = { fg = c.bg, bg = c.blue }, -- tab pages line, active tab page label
+99,100c99,100
+<     Constant = { fg = c.orange }, -- (preferred) any constant
+<     String = { fg = c.green }, --   a string constant: "this is a string"
+---
+>     Constant = { fg = c.purple }, -- (preferred) any constant
+>     String = { fg = c.yellow }, -- a string constant: "this is a string"
+107c107
+<     Function = { fg = c.blue, style = options.styles.functions }, -- function name (also: methods for classes)
+---
+>     Function = { fg = c.green, style = options.styles.functions }, -- function name (also: methods for classes)
+113c113
+<     Operator = { fg = c.blue5 }, -- "sizeof", "+", "*", etc.
+---
+>     Operator = { fg = c.magenta }, -- "sizeof", "+", "*", etc.
+117c117
+<     PreProc = { fg = c.cyan }, -- (preferred) generic Preprocessor
+---
+>     PreProc = { fg = c.magenta }, -- (preferred) generic Preprocessor
+123,124c123,124
+<     Type = { fg = c.blue1 }, -- (preferred) int, long, char, etc.
+<     -- StorageClass  = { }, -- static, register, volatile, etc.
+---
+>     Type = { fg = c.cyan }, -- (preferred) int, long, char, etc.
+>     StorageClass  = { fg = c.magenta }, -- static, register, volatile, etc.
+167c167
+<     ["@text.todo.checked"] = { fg = c.green1 }, -- For brackets and parens.
+---
+>     ["@text.todo.checked"] = { fg = c.green }, -- For brackets and parens.
+222c222
+<     -- TSConstBuiltin      = { };    -- For constant that are built in the language: `nil` in Lua.
+---
+>     ["@constant.builtin"] = { fg = c.green };    -- For constant that are built in the language: `nil` in Lua.
+226c226
+<     ["@field"] = { fg = c.green1 }, -- For fields.
+---
+>     ["@field"] = { fg = c.green }, -- For fields.
+232c232
+<     ["@keyword"] = { fg = c.purple, style = options.styles.keywords }, -- For keywords that don't fall in previous categories.
+---
+>     -- ["@keyword"] = { fg = c.purple, style = options.styles.keywords }, -- For keywords that don't fall in previous categories.
+239,240c239,240
+<     ["@operator"] = { fg = c.blue5 }, -- For any operator: `+`, but also `->` and `*` in C.
+<     ["@parameter"] = { fg = c.yellow }, -- For parameters of a function.
+---
+>     ["@operator"] = { fg = c.magenta }, -- For any operator: `+`, but also `->` and `*` in C.
+>     ["@parameter"] = { fg = c.orange }, -- For parameters of a function.
+242c242
+<     ["@property"] = { fg = c.green1 }, -- Same as `TSField`.
+---
+>     ["@property"] = { fg = c.fg }, -- Same as `TSField`.
+248,249c248,249
+<     ["@string.regex"] = { fg = c.blue6 }, -- For regexes.
+<     ["@string.escape"] = { fg = c.magenta }, -- For escape characters within a string.
+---
+>     -- ["@string.regex"]   = { }, -- For regexes.
+>     ["@string.escape"] = { fg = c.purple }, -- For escape characters within a string.
+251c251
+<     -- TSType              = { };    -- For types.
+---
+>     ["@type"]              = { fg = c.green, style = options.styles.types }, -- For types.
+254c254
+<     ["@variable.builtin"] = { fg = c.red }, -- Variable names that are defined by the languages, like `this` or `self`.
+---
+>     ["@variable.builtin"] = { fg = c.orange }, -- Variable names that are defined by the languages, like `this` or `self`.
+312,329c312,329
+<     -- Neotest
+<     NeotestPassed = { fg = c.green },
+<     NeotestRunning = { fg = c.yellow },
+<     NeotestFailed = { fg = c.red },
+<     NeotestSkipped = { fg = c.blue },
+<     NeotestTest = { fg = c.fg_sidebar },
+<     NeotestNamespace = { fg = c.green2 },
+<     NeotestFocused = { fg = c.yellow },
+<     NeotestFile = { fg = c.teal },
+<     NeotestDir = { fg = c.blue },
+<     NeotestBorder = { fg = c.blue },
+<     NeotestIndent = { fg = c.fg_sidebar },
+<     NeotestExpandMarker = { fg = c.fg_sidebar },
+<     NeotestAdapterName = { fg = c.purple, bold = true },
+<     NeotestWinSelect = { fg = c.blue },
+<     NeotestMarked = { fg = c.blue },
+<     NeotestTarget = { fg = c.blue },
+<     --[[ NeotestUnknown = {}, ]]
+---
+>     -- -- Neotest
+>     -- NeotestPassed = { fg = c.green },
+>     -- NeotestRunning = { fg = c.yellow },
+>     -- NeotestFailed = { fg = c.red },
+>     -- NeotestSkipped = { fg = c.blue },
+>     -- NeotestTest = { fg = c.fg_sidebar },
+>     -- NeotestNamespace = { fg = c.green2 },
+>     -- NeotestFocused = { fg = c.yellow },
+>     -- NeotestFile = { fg = c.teal },
+>     -- NeotestDir = { fg = c.blue },
+>     -- NeotestBorder = { fg = c.blue },
+>     -- NeotestIndent = { fg = c.fg_sidebar },
+>     -- NeotestExpandMarker = { fg = c.fg_sidebar },
+>     -- NeotestAdapterName = { fg = c.purple, bold = true },
+>     -- NeotestWinSelect = { fg = c.blue },
+>     -- NeotestMarked = { fg = c.blue },
+>     -- NeotestTarget = { fg = c.blue },
+>     -- --[[ NeotestUnknown = {}, ]]
+370,377c370,377
+<     -- glyph palette
+<     GlyphPalette1 = { fg = c.red1 },
+<     GlyphPalette2 = { fg = c.green },
+<     GlyphPalette3 = { fg = c.yellow },
+<     GlyphPalette4 = { fg = c.blue },
+<     GlyphPalette6 = { fg = c.green1 },
+<     GlyphPalette7 = { fg = c.fg },
+<     GlyphPalette9 = { fg = c.red },
+---
+>     -- -- glyph palette
+>     -- GlyphPalette1 = { fg = c.red1 },
+>     -- GlyphPalette2 = { fg = c.green },
+>     -- GlyphPalette3 = { fg = c.yellow },
+>     -- GlyphPalette4 = { fg = c.blue },
+>     -- GlyphPalette6 = { fg = c.green },
+>     -- GlyphPalette7 = { fg = c.fg },
+>     -- GlyphPalette9 = { fg = c.red },
+424c424
+<     healthSuccess = { fg = c.green1 },
+---
+>     healthSuccess = { fg = c.green },
+479,483c479,483
+<     -- Hop
+<     HopNextKey = { fg = c.magenta2, bold = true },
+<     HopNextKey1 = { fg = c.blue2, bold = true },
+<     HopNextKey2 = { fg = util.darken(c.blue2, 0.6) },
+<     HopUnmatched = { fg = c.dark3 },
+---
+>     -- -- Hop
+>     -- HopNextKey = { fg = c.magenta, bold = true },
+>     -- HopNextKey1 = { fg = c.blue2, bold = true },
+>     -- HopNextKey2 = { fg = util.darken(c.blue2, 0.6) },
+>     -- HopUnmatched = { fg = c.dark3 },
+485c485
+<     TSNodeKey = { fg = c.magenta2, bold = true },
+---
+>     TSNodeKey = { fg = c.magenta, bold = true },
+488,490c488,490
+<     LeapMatch = { bg = c.magenta2, fg = c.fg, bold = true },
+<     LeapLabelPrimary = { fg = c.magenta2, bold = true },
+<     LeapLabelSecondary = { fg = c.green1, bold = true },
+---
+>     LeapMatch = { bg = c.magenta, fg = c.fg, bold = true },
+>     LeapLabelPrimary = { fg = c.magenta, bold = true },
+>     LeapLabelSecondary = { fg = c.green, bold = true },
+493,505c493,505
+<     LightspeedGreyWash = { fg = c.dark3 },
+<     -- LightspeedCursor = { link = "Cursor" },
+<     LightspeedLabel = { fg = c.magenta2, bold = true, underline = true },
+<     LightspeedLabelDistant = { fg = c.green1, bold = true, underline = true },
+<     LightspeedLabelDistantOverlapped = { fg = c.green2, underline = true },
+<     LightspeedLabelOverlapped = { fg = c.magenta2, underline = true },
+<     LightspeedMaskedChar = { fg = c.orange },
+<     LightspeedOneCharMatch = { bg = c.magenta2, fg = c.fg, bold = true },
+<     LightspeedPendingOpArea = { bg = c.magenta2, fg = c.fg },
+<     LightspeedShortcut = { bg = c.magenta2, fg = c.fg, bold = true, underline = true },
+<     -- LightspeedShortcutOverlapped = { link = "LightspeedShortcut" },
+<     -- LightspeedUniqueChar = { link = "LightspeedUnlabeledMatch" },
+<     LightspeedUnlabeledMatch = { fg = c.blue2, bold = true },
+---
+>     -- LightspeedGreyWash = { fg = c.dark3 },
+>     -- -- LightspeedCursor = { link = "Cursor" },
+>     -- LightspeedLabel = { fg = c.magenta, bold = true, underline = true },
+>     -- LightspeedLabelDistant = { fg = c.green, bold = true, underline = true },
+>     -- LightspeedLabelDistantOverlapped = { fg = c.green2, underline = true },
+>     -- LightspeedLabelOverlapped = { fg = c.magenta, underline = true },
+>     -- LightspeedMaskedChar = { fg = c.orange },
+>     -- LightspeedOneCharMatch = { bg = c.magenta, fg = c.fg, bold = true },
+>     -- LightspeedPendingOpArea = { bg = c.magenta, fg = c.fg },
+>     -- LightspeedShortcut = { bg = c.magenta, fg = c.fg, bold = true, underline = true },
+>     -- -- LightspeedShortcutOverlapped = { link = "LightspeedShortcut" },
+>     -- -- LightspeedUniqueChar = { link = "LightspeedUnlabeledMatch" },
+>     -- LightspeedUnlabeledMatch = { fg = c.blue2, bold = true },
+508,509c508,509
+<     CmpDocumentation = { fg = c.fg, bg = c.bg_float },
+<     CmpDocumentationBorder = { fg = c.border_highlight, bg = c.bg_float },
+---
+>     CmpDocumentation = { fg = c.fg, bg = c.bg_popup },
+>     CmpDocumentationBorder = { fg = c.border_highlight, bg = c.bg_popup },
+513,514c513,514
+<     CmpItemAbbrMatch = { fg = c.blue1, bg = c.none },
+<     CmpItemAbbrMatchFuzzy = { fg = c.blue1, bg = c.none },
+---
+>     CmpItemAbbrMatch = { fg = c.cyan, bg = c.none },
+>     CmpItemAbbrMatchFuzzy = { fg = c.cyan, bg = c.none },
+540,544c540,544
+<     CmpItemKindProperty = { fg = c.green1, bg = c.none },
+<     CmpItemKindField = { fg = c.green1, bg = c.none },
+<     CmpItemKindTypeParameter = { fg = c.green1, bg = c.none },
+<     CmpItemKindEnumMember = { fg = c.green1, bg = c.none },
+<     CmpItemKindOperator = { fg = c.green1, bg = c.none },
+---
+>     CmpItemKindProperty = { fg = c.green, bg = c.none },
+>     CmpItemKindField = { fg = c.green, bg = c.none },
+>     CmpItemKindTypeParameter = { fg = c.green, bg = c.none },
+>     CmpItemKindEnumMember = { fg = c.green, bg = c.none },
+>     CmpItemKindOperator = { fg = c.green, bg = c.none },
+554,555c554,555
+<     NavicIconsProperty = { fg = c.green1, bg = c.none },
+<     NavicIconsField = { fg = c.green1, bg = c.none },
+---
+>     NavicIconsProperty = { fg = c.green, bg = c.none },
+>     NavicIconsField = { fg = c.green, bg = c.none },
+570c570
+<     NavicIconsEnumMember = { fg = c.green1, bg = c.none },
+---
+>     NavicIconsEnumMember = { fg = c.green, bg = c.none },
+574c574
+<     NavicIconsTypeParameter = { fg = c.green1, bg = c.none },
+---
+>     NavicIconsTypeParameter = { fg = c.green, bg = c.none },
+578,579c578,579
+<     IndentBlanklineChar = { fg = c.fg_gutter, nocombine = true },
+<     IndentBlanklineContextChar = { fg = c.purple, nocombine = true },
+---
+>     IndentBlanklineChar = { fg = util.darken(c.fg_gutter, 0.4), nocombine = true },
+>     IndentBlanklineContextChar = { fg = util.darken(c.fg_gutter, 0.7), nocombine = true },
+607c607
+<     LazyProgressDone = { bold = true, fg = c.magenta2 },
+---
+>     LazyProgressDone = { bold = true, fg = c.magenta },
+644c644
+<     MiniJump = { bg = c.magenta2, fg = "#ffffff" },
+---
+>     MiniJump = { bg = c.magenta, fg = "#ffffff" },
+646c646
+<     MiniJump2dSpot = { fg = c.magenta2, bold = true, nocombine = true },
+---
+>     MiniJump2dSpot = { fg = c.magenta, bold = true, nocombine = true },
+662,667c662,667
+<     MiniStatuslineModeCommand = { fg = c.black, bg = c.yellow, bold = true },
+<     MiniStatuslineModeInsert = { fg = c.black, bg = c.green, bold = true },
+<     MiniStatuslineModeNormal = { fg = c.black, bg = c.blue, bold = true },
+<     MiniStatuslineModeOther = { fg = c.black, bg = c.teal, bold = true },
+<     MiniStatuslineModeReplace = { fg = c.black, bg = c.red, bold = true },
+<     MiniStatuslineModeVisual = { fg = c.black, bg = c.magenta, bold = true },
+---
+>     MiniStatuslineModeCommand = { fg = c.bg, bg = c.yellow, bold = true },
+>     MiniStatuslineModeInsert = { fg = c.bg, bg = c.green, bold = true },
+>     MiniStatuslineModeNormal = { fg = c.bg, bg = c.blue, bold = true },
+>     MiniStatuslineModeOther = { fg = c.bg, bg = c.teal, bold = true },
+>     MiniStatuslineModeReplace = { fg = c.bg, bg = c.red, bold = true },
+>     MiniStatuslineModeVisual = { fg = c.bg, bg = c.magenta, bold = true },
+669c669
+<     MiniSurround = { bg = c.orange, fg = c.black },
+---
+>     MiniSurround = { bg = c.orange, fg = c.bg },
+710,714c710,714
+<     NoiceCompletionItemKindProperty = { fg = c.green1, bg = c.none },
+<     NoiceCompletionItemKindField = { fg = c.green1, bg = c.none },
+<     NoiceCompletionItemKindTypeParameter = { fg = c.green1, bg = c.none },
+<     NoiceCompletionItemKindEnumMember = { fg = c.green1, bg = c.none },
+<     NoiceCompletionItemKindOperator = { fg = c.green1, bg = c.none },
+---
+>     NoiceCompletionItemKindProperty = { fg = c.green, bg = c.none },
+>     NoiceCompletionItemKindField = { fg = c.green, bg = c.none },
+>     NoiceCompletionItemKindTypeParameter = { fg = c.green, bg = c.none },
+>     NoiceCompletionItemKindEnumMember = { fg = c.green, bg = c.none },
+>     NoiceCompletionItemKindOperator = { fg = c.green, bg = c.none },
+757,762d756
+< 
+<   if config.is_day() then
+<     util.invert_colors(theme.colors)
+<     util.invert_highlights(theme.highlights)
+<   end
+< 

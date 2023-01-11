@@ -1,58 +1,58 @@
-*molokai.nvim.txt*     For Neovim >= 0.8.0     Last change: 2023 January 04
+*molokai.txt*          For NVIM v0.8.0         Last change: 2023 January 04
 
 ==============================================================================
-Table of Contents                          *molokai.nvim-table-of-contents*
+Table of Contents                               *molokai-table-of-contents*
 
-1. Tokyo Night                                   |molokai.nvim-tokyo-night|
-  - Storm                                              |molokai.nvim-storm|
-  - Night                                              |molokai.nvim-night|
-  - Moon                                                |molokai.nvim-moon|
-  - Day                                                  |molokai.nvim-day|
-  - Features                                        |molokai.nvim-features|
-  - Requirements                                |molokai.nvim-requirements|
-  - Installation                                |molokai.nvim-installation|
-  - Usage                                              |molokai.nvim-usage|
-  - Configuration                              |molokai.nvim-configuration|
-  - Overriding Colors & Highlight Groups|molokai.nvim-overriding-colors-&-highlight-groups|
-  - Extras                                            |molokai.nvim-extras|
-  - Contributing                                |molokai.nvim-contributing|
+1. 🏙 Tokyo Night                              |molokai-🏙-tokyo-night|
+  - Storm                                                   |molokai-storm|
+  - Night                                                   |molokai-night|
+  - Moon                                                     |molokai-moon|
+  - Day                                                       |molokai-day|
+  - ✨ Features                                     |molokai-✨-features|
+  - ⚡️ Requirements                       |molokai-⚡️-requirements|
+  - 📦 Installation                           |molokai-📦-installation|
+  - 🚀 Usage                                         |molokai-🚀-usage|
+  - ⚙️ Configuration                     |molokai-⚙️-configuration|
+  - 🪓 Overriding Colors & Highlight Groups|molokai-🪓-overriding-colors-&-highlight-groups|
+  - 🍭 Extras                                       |molokai-🍭-extras|
+  - 🔥 Contributing                           |molokai-🔥-contributing|
 
 ==============================================================================
-1. Tokyo Night                                   *molokai.nvim-tokyo-night*
+1. 🏙 Tokyo Night                              *molokai-🏙-tokyo-night*
 
 A dark and light Neovim theme written in Lua ported from the Visual Studio Code
 molokai <https://github.com/enkia/tokyo-night-vscode-theme> theme. Includes
 extra themes for Kitty, Alacritty, iTerm and Fish.
 
-STORM                                                  *molokai.nvim-storm*
+STORM                                                       *molokai-storm*
 
 <div class="figure">
 <img src="https://user-images.githubusercontent.com/292349/115295095-3a9e5080-a10e-11eb-9aed-6054488c46ce.png" title="fig:"/>
 <p class="caption">image</p>
 </div>
 
-NIGHT                                                  *molokai.nvim-night*
+NIGHT                                                       *molokai-night*
 
 <div class="figure">
 <img src="https://user-images.githubusercontent.com/292349/115295327-7afdce80-a10e-11eb-89b3-2591262bf95a.png" title="fig:"/>
 <p class="caption">image</p>
 </div>
 
-MOON                                                    *molokai.nvim-moon*
+MOON                                                         *molokai-moon*
 
 <div class="figure">
 <img src="https://user-images.githubusercontent.com/292349/190951628-10ba28a1-57ff-4479-8eab-47400a402242.png" title="fig:"/>
 <p class="caption">image</p>
 </div>
 
-DAY                                                      *molokai.nvim-day*
+DAY                                                           *molokai-day*
 
 <div class="figure">
 <img src="https://user-images.githubusercontent.com/292349/115996270-78c6c480-a593-11eb-8ed0-7d1400b058f5.png" title="fig:"/>
 <p class="caption">image</p>
 </div>
 
-FEATURES                                            *molokai.nvim-features*
+✨ FEATURES                                         *molokai-✨-features*
 
 
 - supports the latest Neovim 5.0 features like TreeSitter and LSP
@@ -92,35 +92,35 @@ PLUGIN SUPPORT ~
 - Mini <https://github.com/echasnovski/mini.nvim>
 
 
-REQUIREMENTS                                    *molokai.nvim-requirements*
+⚡️ REQUIREMENTS                           *molokai-⚡️-requirements*
 
 
 - Neovim >= 0.6.0
 
 
-INSTALLATION                                    *molokai.nvim-installation*
+📦 INSTALLATION                               *molokai-📦-installation*
 
 Install the theme with your preferred package manager:
 
 vim-plug <https://github.com/junegunn/vim-plug>
 
->vim
+>
     Plug 'UtkarshVerma/molokai.nvim', { 'branch': 'main' }
 <
 
 
 packer <https://github.com/wbthomason/packer.nvim>
 
->lua
+>
     use 'UtkarshVerma/molokai.nvim'
 <
 
 
-USAGE                                                  *molokai.nvim-usage*
+🚀 USAGE                                             *molokai-🚀-usage*
 
 Enable the colorscheme:
 
->vim
+>
     " Vim Script
     colorscheme molokai
 
@@ -132,7 +132,7 @@ Enable the colorscheme:
 <
 
 
->lua
+>
     -- Lua
     vim.cmd[[colorscheme molokai]]
 <
@@ -140,7 +140,7 @@ Enable the colorscheme:
 
 To enable the `molokai` theme for `Barbecue`:
 
->lua
+>
     require('barbecue').setup {
       -- ... your barbecue config
       theme = 'molokai',
@@ -152,7 +152,7 @@ To enable the `molokai` theme for `Barbecue`:
 To enable the `molokai` theme for `Lualine`, simply specify it in your
 lualine settings:
 
->lua
+>
     require('lualine').setup {
       options = {
         -- ... your lualine config
@@ -165,16 +165,16 @@ lualine settings:
 
 To enable the `molokai` colorscheme for `Lightline`:
 
->vim
+>
     " Vim Script
     let g:lightline = {'colorscheme': 'molokai'}
 <
 
 
-CONFIGURATION                                  *molokai.nvim-configuration*
+⚙️ CONFIGURATION                         *molokai-⚙️-configuration*
 
 
-  configuration needs to be set **BEFORE** loading the color scheme with
+  ❗️ configuration needs to be set **BEFORE** loading the color scheme with
   `colorscheme molokai`
 
 
@@ -190,7 +190,7 @@ The **day** style will be used if:
 
 molokai will use the default options, unless you call `setup`.
 
->lua
+>
     require("molokai").setup({
       -- your configuration comes here
       -- or leave it empty to use the default settings
@@ -210,8 +210,8 @@ molokai will use the default options, unless you call `setup`.
         floats = "dark", -- style for floating windows
       },
       sidebars = { "qf", "help" }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
-      day_brightness = 0.3, -- Adjusts the brightness of the colors of the Day style. Number between 0 and 1, from dull to vibrant colors
-      hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard StatusLine and LuaLine.
+      day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
+      hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
       dim_inactive = false, -- dims inactive windows
       lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
 
@@ -229,7 +229,7 @@ molokai will use the default options, unless you call `setup`.
 <
 
 
-OVERRIDING COLORS & HIGHLIGHT GROUPS*molokai.nvim-overriding-colors-&-highlight-groups*
+🪓 OVERRIDING COLORS & HIGHLIGHT GROUPS*molokai-🪓-overriding-colors-&-highlight-groups*
 
 How the highlight groups are calculated:
 
@@ -246,7 +246,7 @@ Please refer to default values for `colors` and `highlights` for the storm
 
 Example for changing some settings and colors
 
->lua
+>
     require("molokai").setup({
       -- use the night style
       style = "night",
@@ -258,7 +258,7 @@ Example for changing some settings and colors
       -- Change the "hint" color to the "orange" color, and make the "error" color bright red
       on_colors = function(colors)
         colors.hint = colors.orange
-        colors.error = "ff0000"
+        colors.error = "#ff0000"
       end
     })
 <
@@ -267,10 +267,10 @@ Example for changing some settings and colors
 Example to make Telescope borderless
 <https://github.com/nvim-telescope/telescope.nvim/wiki/Gallery#borderless>
 
->lua
+>
     require("molokai").setup({
       on_highlights = function(hl, c)
-        local prompt = "2d3149"
+        local prompt = "#2d3149"
         hl.TelescopeNormal = {
           bg = c.bg_dark,
           fg = c.fg_dark,
@@ -308,15 +308,15 @@ MAKING `UNDERCURLS` WORK PROPERLY IN **TMUX** ~
 To have undercurls show up and in color, add the following to your **Tmux**
 config file:
 
->sh
-     Undercurl
+>
+    # Undercurl
     set -g default-terminal "${TERM}"
-    set -as terminal-overrides ',:Smulx=\E[4::%p1%dm'   undercurl support
-    set -as terminal-overrides ',:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'   underscore colours - needs tmux-3.0
+    set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'  # undercurl support
+    set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'  # underscore colours - needs tmux-3.0
 <
 
 
-EXTRAS                                                *molokai.nvim-extras*
+🍭 EXTRAS                                           *molokai-🍭-extras*
 
 Extra color configs for **Kitty**, **Alacritty**, **Fish**, **WezTerm**,
 **iTerm** and **foot** can be found in extras <extras/>. To use them, refer to
@@ -330,7 +330,7 @@ their respective documentation.
 You can easily use the color palette for other plugins inside your Neovim
 config:
 
->lua
+>
     local colors = require("molokai.colors").setup() -- pass in any of the config options as explained above
     local util = require("molokai.util")
 
@@ -339,7 +339,7 @@ config:
 <
 
 
-CONTRIBUTING                                    *molokai.nvim-contributing*
+🔥 CONTRIBUTING                               *molokai-🔥-contributing*
 
 Pull requests are welcome. For the `extras`, we use a simple template system
 that can be used to generate themes for the different styles.
