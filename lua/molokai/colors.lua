@@ -7,6 +7,7 @@ M.default = {
   none = "none",
   bg = "#1b1d1e",
   fg = "#f8f8f2",
+  fg_gutter = "#808080",
   dark3 = "#464741", -- TODO
   comment = "#7e8e91",
   dark5 = "#c2c2bf",
@@ -28,7 +29,7 @@ M.default = {
   git = {
     change = "#6183bb",
     add = "#449dab",
-    delete = "#914c54"
+    delete = "#914c54",
   },
 }
 
@@ -44,29 +45,28 @@ function M.setup(opts)
   local colors = vim.tbl_deep_extend("force", M.default, palette)
 
   util.bg = colors.bg
-  colors.bg_highlight = util.lighten(colors.bg, 0.95)
 
   colors.gitSigns = {
     add = util.darken(colors.green, 0.6),
     change = util.darken(colors.blue, 0.8),
-    delete = util.darken(colors.red, 0.8)
+    delete = util.darken(colors.red, 0.8),
   }
 
   colors.diff = {
-    add = colors.green,
-    delete = colors.magenta,
-    change = colors.yellow,
-    text = colors.fg,
+    add = util.darken(colors.green, 0.3),
+    delete = util.darken(colors.red, 0.25),
+    change = util.darken(colors.green, 0.1),
+    text = util.darken(colors.green, 0.2),
   }
 
   colors.fg_dark = util.darken(colors.fg, 0.6)
-  colors.fg_gutter = util.darken(colors.fg, 0.4)
 
   colors.git.ignore = colors.dark3
-  colors.border_highlight = util.darken(colors.cyan, 0.8)
+  colors.bg_highlight = util.lighten(colors.bg, 0.91)
   colors.bg_visual = util.lighten(colors.bg, 0.85)
-  colors.bg_light = util.lighten(colors.bg, 0.9)
+  colors.bg_light = util.lighten(colors.bg, 0.95)
   colors.bg_dark = util.darken(colors.bg, 0.9, "#000000")
+  colors.border_highlight = util.darken(colors.cyan, 0.8)
   colors.border = colors.bg_highlight
 
   -- Popups and statusline always get a dark background

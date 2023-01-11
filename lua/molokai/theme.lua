@@ -46,7 +46,7 @@ function M.setup()
     ErrorMsg = { fg = c.error }, -- error messages on the command line
     VertSplit = { fg = c.border }, -- the column separating vertically split windows
     WinSeparator = { fg = c.border, bold = true }, -- the column separating vertically split windows
-    Folded = { fg = c.blue, bg = c.fg_gutter }, -- line used for closed folds
+    Folded = { fg = c.fg_gutter, bg = c.bg_light }, -- line used for closed folds
     FoldColumn = { bg = options.transparent and c.none or c.bg, fg = c.comment }, -- 'foldcolumn'
     SignColumn = { bg = options.transparent and c.none or c.bg, fg = c.fg_gutter }, -- column where |signs| are displayed
     SignColumnSB = { bg = c.bg_sidebar, fg = c.fg_gutter }, -- column where |signs| are displayed
@@ -58,7 +58,7 @@ function M.setup()
     MsgArea = { fg = c.fg_dark }, -- Area for messages and cmdline
     -- MsgSeparator= { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
     MoreMsg = { fg = c.blue }, -- |more-prompt|
-    NonText = { fg = c.dark3 }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+    NonText = { fg = c.fg_gutter }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
     Normal = { fg = c.fg, bg = options.transparent and c.none or c.bg }, -- normal text
     NormalNC = { fg = c.fg, bg = options.transparent and c.none or options.dim_inactive and c.bg_dark or c.bg }, -- normal text in non-current windows
     NormalSB = { fg = c.fg_sidebar, bg = c.bg_sidebar }, -- normal text in sidebar
@@ -73,7 +73,7 @@ function M.setup()
     Search = { bg = c.bg_search }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
     IncSearch = { bg = c.orange, fg = c.bg }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
     CurSearch = { link = "IncSearch" },
-    SpecialKey = { fg = c.dark3 }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
+    SpecialKey = { fg = c.fg_gutter }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
     SpellBad = { sp = c.error, undercurl = true }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
     SpellCap = { sp = c.warning, undercurl = true }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
     SpellLocal = { sp = c.info, undercurl = true }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
@@ -248,7 +248,8 @@ function M.setup()
     -- ["@string.regex"]   = { }, -- For regexes.
     ["@string.escape"] = { fg = c.purple }, -- For escape characters within a string.
     -- TSSymbol            = { };    -- For identifiers referring to symbols or atoms.
-    ["@type"]              = { fg = c.green, style = options.styles.types }, -- For types.
+    -- ["@type"]           = { },    -- For types.
+    ["@type.qualifier"] = { fg = c.magenta },
     -- TSTypeBuiltin       = { };    -- For builtin types.
     ["@variable"] = { style = options.styles.variables }, -- Any variable name that does not have another highlight.
     ["@variable.builtin"] = { fg = c.orange }, -- Variable names that are defined by the languages, like `this` or `self`.
@@ -485,10 +486,10 @@ function M.setup()
     TSNodeKey = { fg = c.magenta, bold = true },
     TSNodeUnmatched = { fg = c.dark3 },
 
-    LeapMatch = { bg = c.magenta, fg = c.fg, bold = true },
-    LeapLabelPrimary = { fg = c.magenta, bold = true },
-    LeapLabelSecondary = { fg = c.green, bold = true },
-    LeapBackdrop = { fg = c.dark3 },
+    -- LeapMatch = { bg = c.magenta, fg = c.fg, bold = true },
+    -- LeapLabelPrimary = { fg = c.magenta, bold = true },
+    -- LeapLabelSecondary = { fg = c.green, bold = true },
+    -- LeapBackdrop = { fg = c.dark3 },
 
     -- LightspeedGreyWash = { fg = c.dark3 },
     -- -- LightspeedCursor = { link = "Cursor" },

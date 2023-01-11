@@ -2,7 +2,7 @@
 < local util = require("tokyonight.util")
 ---
 > local util = require("molokai.util")
-7,41c7,31
+7,41c7,32
 <   none = "NONE",
 <   bg_dark = "#1f2335",
 <   bg = "#24283b",
@@ -42,6 +42,7 @@
 >   none = "none",
 >   bg = "#1b1d1e",
 >   fg = "#f8f8f2",
+>   fg_gutter = "#808080",
 >   dark3 = "#464741", -- TODO
 >   comment = "#7e8e91",
 >   dark5 = "#c2c2bf",
@@ -63,8 +64,8 @@
 >   git = {
 >     change = "#6183bb",
 >     add = "#449dab",
->     delete = "#914c54"
-45,97d34
+>     delete = "#914c54",
+45,97d35
 < M.night = {
 <   bg = "#1a1b26",
 <   bg_dark = "#16161e",
@@ -118,11 +119,11 @@
 <   return ret
 < end
 < 
-101c38
+101c39
 <   local config = require("tokyonight.config")
 ---
 >   local config = require("molokai.config")
-103,107c40
+103,107c41
 <   local style = config.is_day() and config.options.light_style or config.options.style
 <   local palette = M[style] or {}
 <   if type(palette) == "function" then
@@ -130,15 +131,14 @@
 <   end
 ---
 >   local palette = {}
-114c47,53
+114c48,53
 <   util.day_brightness = config.options.day_brightness
 ---
->   colors.bg_highlight = util.lighten(colors.bg, 0.95)
 > 
 >   colors.gitSigns = {
 >     add = util.darken(colors.green, 0.6),
 >     change = util.darken(colors.blue, 0.8),
->     delete = util.darken(colors.red, 0.8)
+>     delete = util.darken(colors.red, 0.8),
 >   }
 117,120c56,59
 <     add = util.darken(colors.green2, 0.15),
@@ -146,23 +146,23 @@
 <     change = util.darken(colors.blue7, 0.15),
 <     text = colors.blue7,
 ---
->     add = colors.green,
->     delete = colors.magenta,
->     change = colors.yellow,
->     text = colors.fg,
-122a62,64
+>     add = util.darken(colors.green, 0.3),
+>     delete = util.darken(colors.red, 0.25),
+>     change = util.darken(colors.green, 0.1),
+>     text = util.darken(colors.green, 0.2),
+122a62,63
 >   colors.fg_dark = util.darken(colors.fg, 0.6)
->   colors.fg_gutter = util.darken(colors.fg, 0.4)
 > 
-124,126c66,70
+124,126c65,70
 <   colors.black = util.darken(colors.bg, 0.8, "#000000")
 <   colors.border_highlight = util.darken(colors.blue1, 0.8)
 <   colors.border = colors.black
 ---
->   colors.border_highlight = util.darken(colors.cyan, 0.8)
+>   colors.bg_highlight = util.lighten(colors.bg, 0.91)
 >   colors.bg_visual = util.lighten(colors.bg, 0.85)
->   colors.bg_light = util.lighten(colors.bg, 0.9)
+>   colors.bg_light = util.lighten(colors.bg, 0.95)
 >   colors.bg_dark = util.darken(colors.bg, 0.9, "#000000")
+>   colors.border_highlight = util.darken(colors.cyan, 0.8)
 >   colors.border = colors.bg_highlight
 141,142c85
 <   colors.bg_visual = util.darken(colors.blue0, 0.7)

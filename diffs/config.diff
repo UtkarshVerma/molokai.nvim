@@ -1,11 +1,9 @@
 7,8d6
 <   style = "storm", -- The theme comes in three styles, `storm`, a darker variant `night` and `day`
 <   light_style = "day", -- The theme is used when the background is set to light
-15a14
->     types = { underline = true },
-23d21
+23d20
 <   day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
-52,55d49
+52,55d48
 < end
 < 
 < function M.is_day()
