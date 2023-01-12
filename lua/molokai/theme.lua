@@ -121,7 +121,7 @@ function M.setup()
     -- PreCondit     = { }, --  preprocessor #if, #else, #endif, etc.
 
     Type = { fg = c.cyan }, -- (preferred) int, long, char, etc.
-    StorageClass  = { fg = c.magenta }, -- static, register, volatile, etc.
+    StorageClass = { fg = c.magenta }, -- static, register, volatile, etc.
     -- Structure     = { }, --  struct, union, enum, etc.
     -- Typedef       = { }, --  A typedef
 
@@ -219,7 +219,7 @@ function M.setup()
     ["@constructor"] = { fg = c.magenta }, -- For constructor calls and definitions: `= { }` in Lua, and Java constructors.
     -- TSConditional       = { };    -- For keywords related to conditionnals.
     -- TSConstant          = { };    -- For constants
-    ["@constant.builtin"] = { fg = c.green };    -- For constant that are built in the language: `nil` in Lua.
+    ["@constant.builtin"] = { fg = c.green }, -- For constant that are built in the language: `nil` in Lua.
     -- TSConstMacro        = { };    -- For constants that are defined by macros: `NULL` in C.
     -- TSError             = { };    -- For syntax/parser errors.
     -- TSException         = { };    -- For exception related keywords.
@@ -293,14 +293,15 @@ function M.setup()
     IlluminatedWordWrite = { bg = c.fg_gutter },
 
     -- diff
+    diffIndexLine = { fg = c.fg, style = "bold" },
+    diffOldFile = { fg = c.fg, style = "bold" },
+    diffNewFile = { fg = c.fg, style = "bold" },
+    diffLine = { fg = c.cyan },
+    diffSubname = { fg = c.fg },
     diffAdded = { fg = c.git.add },
     diffRemoved = { fg = c.git.delete },
     diffChanged = { fg = c.git.change },
-    diffOldFile = { fg = c.yellow },
-    diffNewFile = { fg = c.orange },
-    diffFile = { fg = c.blue },
-    diffLine = { fg = c.comment },
-    diffIndexLine = { fg = c.cyan },
+    diffFile = { fg = c.fg, style = "bold" },
 
     -- Neogit
     NeogitBranch = { fg = c.magenta },
