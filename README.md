@@ -2,7 +2,7 @@
 
 A dark Neovim theme written in Lua ported from the Visual Studio Code [Dark Molokai](https://github.com/nonylene/vscode-dark-molokai-theme) theme.
 
-> This repo heavily borrows source code from the awesome [molokai](https://github.com/UtkarshVerma/molokai.nvim) theme for Neovim.
+> This repo heavily borrows source code from the awesome [tokyonight](https://github.com/folke/tokyonight.nvim/) theme for Neovim.
 
 ## ✨ Features
 
