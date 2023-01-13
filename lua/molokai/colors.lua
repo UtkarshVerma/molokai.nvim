@@ -17,10 +17,10 @@ M.default = {
   orange = "#fd971f",
   yellow = "#e6db74",
   green = "#a6e22e",
-  teal = "#1abc9c", -- TODO
-  red = "#f44747",
+  springgreen = "#00ff87",
+  red = "#ff4a44",
 
-  error = "#f44747",
+  error = "#ff4a44",
   warning = "#cd9731",
   info = "#6796e6",
   hint = "#b267e6",
@@ -58,7 +58,7 @@ function M.setup(opts)
     text = util.darken(colors.green, 0.2),
   }
 
-  colors.fg_dark = util.darken(colors.fg, 0.6)
+  colors.fg_dark = util.darken(colors.fg, 0.8)
 
   colors.bg_highlight = util.lighten(colors.bg, 0.91)
   colors.bg_visual = util.lighten(colors.bg, 0.85)

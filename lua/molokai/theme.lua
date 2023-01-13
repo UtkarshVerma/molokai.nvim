@@ -28,8 +28,8 @@ function M.setup()
     Foo = { bg = c.magenta, fg = c.magenta },
 
     Comment = { fg = c.comment, style = options.styles.comments }, -- any comment
-    ColorColumn = { bg = c.black }, -- used for the columns set with 'colorcolumn'
-    Conceal = { fg = c.dark5 }, -- placeholder characters substituted for concealed text (see 'conceallevel')
+    ColorColumn = { bg = c.bg_dark }, -- used for the columns set with 'colorcolumn'
+    Conceal = { fg = c.red }, -- placeholder characters substituted for concealed text (see 'conceallevel')
     Cursor = { fg = c.bg, bg = c.fg }, -- character under the cursor
     lCursor = { fg = c.bg, bg = c.fg }, -- the character under the cursor when |language-mapping| is used (see 'guicursor')
     CursorIM = { fg = c.bg, bg = c.fg }, -- like Cursor, but used when in IME mode |CursorIM|
@@ -83,7 +83,7 @@ function M.setup()
     TabLine = { bg = c.bg_statusline, fg = c.fg_gutter }, -- tab pages line, not active tab page label
     TabLineFill = { bg = c.black }, -- tab pages line, where there are no labels
     TabLineSel = { fg = c.bg, bg = c.blue }, -- tab pages line, active tab page label
-    Title = { fg = c.blue, bold = true }, -- titles for output from ":set all", ":autocmd" etc.
+    Title = { fg = c.green, bold = true }, -- titles for output from ":set all", ":autocmd" etc.
     Visual = { bg = c.bg_visual }, -- Visual mode selection
     VisualNOS = { bg = c.bg_visual }, -- Visual mode selection when vim is "Not Owning the Selection".
     WarningMsg = { fg = c.warning }, -- warning messages
@@ -151,13 +151,13 @@ function M.setup()
     -- mkdHeading = { fg = c.orange, bold = true },
     -- mkdCode = { bg = c.terminal_black, fg = c.fg },
     mkdCodeDelimiter = { bg = c.terminal_black, fg = c.fg },
-    mkdCodeStart = { fg = c.teal, bold = true },
-    mkdCodeEnd = { fg = c.teal, bold = true },
+    mkdCodeStart = { fg = c.springgreen, bold = true },
+    mkdCodeEnd = { fg = c.springgreen, bold = true },
     -- mkdLink = { fg = c.blue, underline = true },
 
     markdownHeadingDelimiter = { fg = c.orange, bold = true },
-    markdownCode = { fg = c.teal },
-    markdownCodeBlock = { fg = c.teal },
+    markdownCode = { fg = c.springgreen },
+    markdownCodeBlock = { fg = c.springgreen },
     markdownH1 = { fg = c.magenta, bold = true },
     markdownH2 = { fg = c.blue, bold = true },
     markdownLinkText = { fg = c.blue, underline = true },
@@ -165,8 +165,8 @@ function M.setup()
     ["@punctuation.special.markdown"] = { fg = c.orange, bold = true },
     ["@text.todo.unchecked"] = { fg = c.blue }, -- For brackets and parens.
     ["@text.todo.checked"] = { fg = c.green }, -- For brackets and parens.
-    ["@text.literal.markdown_inline"] = { bg = c.terminal_black, fg = c.blue },
-    ["@text.literal.markdown"] = { link = "Normal" },
+    -- ["@text.literal.markdown_inline"] = { bg = c.bg_light, fg = c.orange },
+    ["@text.literal.markdown"] = { fg = c.fg_dark },
     ["helpCommand"] = { bg = c.terminal_black, fg = c.blue },
 
     debugPC = { bg = c.bg_sidebar }, -- used for highlighting the current line in terminal-debug
@@ -213,7 +213,7 @@ function M.setup()
     -- TSBoolean           = { };    -- For booleans.
     -- TSCharacter         = { };    -- For characters.
     -- TSComment           = { };    -- For comment blocks.
-    TSNote = { fg = c.bg, bg = c.info },
+    ["@text.note"] = { fg = c.bg, bg = c.info },
     ["@text.warning"] = { fg = c.bg, bg = c.warning },
     ["@text.danger"] = { fg = c.bg, bg = c.error },
     ["@constructor"] = { fg = c.magenta }, -- For constructor calls and definitions: `= { }` in Lua, and Java constructors.
@@ -241,9 +241,9 @@ function M.setup()
     ["@parameter"] = { fg = c.orange }, -- For parameters of a function.
     -- TSParameterReference= { };    -- For references to parameters of a function.
     ["@property"] = { fg = c.fg }, -- Same as `TSField`.
-    ["@punctuation.delimiter"] = { fg = c.blue5 }, -- For delimiters ie: `.`
-    ["@punctuation.bracket"] = { fg = c.fg_dark }, -- For brackets and parens.
-    ["@punctuation.special"] = { fg = c.blue5 }, -- For special punctutation that does not fall in the catagories before.
+    -- ["@punctuation.delimiter"] = { fg = c.blue5 }, -- For delimiters ie: `.`
+    ["@punctuation.bracket"] = { fg = c.orange }, -- For brackets and parens.
+    -- ["@punctuation.special"] = { fg = c.blue5 }, -- For special punctutation that does not fall in the catagories before.
     -- TSRepeat            = { };    -- For keywords related to loops.
     -- TSString            = { };    -- For strings.
     -- ["@string.regex"]   = { }, -- For regexes.
@@ -258,13 +258,13 @@ function M.setup()
     -- TSTag               = { };    -- Tags like html tag names.
     -- TSTagDelimiter      = { };    -- Tag delimiter like `<` `>` `/`
     -- TSText              = { };    -- For strings considered text in a markup language.
-    ["@text.reference"] = { fg = c.teal },
+    ["@text.reference"] = { fg = c.springgreen },
     -- TSEmphasis          = { };    -- For text to be represented with emphasis.
     -- TSUnderline         = { };    -- For text to be represented with an underline.
-    -- TSStrike            = { };    -- For strikethrough text.
+    ["@text.strike"] = { strikethrough = true }, -- For strikethrough text.
     -- TSTitle             = { };    -- Text that is part of a title.
-    -- TSLiteral           = { };    -- Literal text.
-    -- TSURI               = { };    -- Any URI like a link or email.
+    ["@text.literal"] = { fg = c.orange };    -- Literal text.
+    ["@text.uri"] = { style = "underline" };    -- Any URI like a link or email.
     ["@text.diff.add"] = { link = "DiffAdd" },
     ["@text.diff.delete"] = { link = "DiffDelete" },
 
@@ -275,7 +275,7 @@ function M.setup()
     rainbowcol1 = { fg = c.red },
     rainbowcol2 = { fg = c.yellow },
     rainbowcol3 = { fg = c.green },
-    rainbowcol4 = { fg = c.teal },
+    rainbowcol4 = { fg = c.springgreen },
     rainbowcol5 = { fg = c.blue },
     rainbowcol6 = { fg = c.magenta },
     rainbowcol7 = { fg = c.purple },
@@ -320,7 +320,7 @@ function M.setup()
     -- NeotestTest = { fg = c.fg_sidebar },
     -- NeotestNamespace = { fg = c.green2 },
     -- NeotestFocused = { fg = c.yellow },
-    -- NeotestFile = { fg = c.teal },
+    -- NeotestFile = { fg = c.springgreen },
     -- NeotestDir = { fg = c.blue },
     -- NeotestBorder = { fg = c.blue },
     -- NeotestIndent = { fg = c.fg_sidebar },
@@ -666,7 +666,7 @@ function M.setup()
     MiniStatuslineModeCommand = { fg = c.bg, bg = c.yellow, bold = true },
     MiniStatuslineModeInsert = { fg = c.bg, bg = c.green, bold = true },
     MiniStatuslineModeNormal = { fg = c.bg, bg = c.blue, bold = true },
-    MiniStatuslineModeOther = { fg = c.bg, bg = c.teal, bold = true },
+    MiniStatuslineModeOther = { fg = c.bg, bg = c.springgreen, bold = true },
     MiniStatuslineModeReplace = { fg = c.bg, bg = c.red, bold = true },
     MiniStatuslineModeVisual = { fg = c.bg, bg = c.magenta, bold = true },
 

@@ -12,6 +12,12 @@
 <     Foo = { bg = c.magenta2, fg = c.magenta2 },
 ---
 >     Foo = { bg = c.magenta, fg = c.magenta },
+31,32c31,32
+<     ColorColumn = { bg = c.black }, -- used for the columns set with 'colorcolumn'
+<     Conceal = { fg = c.dark5 }, -- placeholder characters substituted for concealed text (see 'conceallevel')
+---
+>     ColorColumn = { bg = c.bg_dark }, -- used for the columns set with 'colorcolumn'
+>     Conceal = { fg = c.red }, -- placeholder characters substituted for concealed text (see 'conceallevel')
 49c49
 <     Folded = { fg = c.blue, bg = c.fg_gutter }, -- line used for closed folds
 ---
@@ -44,10 +50,12 @@
 <     SpecialKey = { fg = c.dark3 }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
 ---
 >     SpecialKey = { fg = c.fg_gutter }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
-85c85
+85,86c85,86
 <     TabLineSel = { fg = c.black, bg = c.blue }, -- tab pages line, active tab page label
+<     Title = { fg = c.blue, bold = true }, -- titles for output from ":set all", ":autocmd" etc.
 ---
 >     TabLineSel = { fg = c.bg, bg = c.blue }, -- tab pages line, active tab page label
+>     Title = { fg = c.green, bold = true }, -- titles for output from ":set all", ":autocmd" etc.
 99,100c99,100
 <     Constant = { fg = c.orange }, -- (preferred) any constant
 <     String = { fg = c.green }, --   a string constant: "this is a string"
@@ -71,15 +79,35 @@
 <     -- StorageClass  = { }, -- static, register, volatile, etc.
 ---
 >     Type = { fg = c.cyan }, -- (preferred) int, long, char, etc.
->     StorageClass  = { fg = c.magenta }, -- static, register, volatile, etc.
-167c167
+>     StorageClass = { fg = c.magenta }, -- static, register, volatile, etc.
+154,155c154,155
+<     mkdCodeStart = { fg = c.teal, bold = true },
+<     mkdCodeEnd = { fg = c.teal, bold = true },
+---
+>     mkdCodeStart = { fg = c.springgreen, bold = true },
+>     mkdCodeEnd = { fg = c.springgreen, bold = true },
+159,160c159,160
+<     markdownCode = { fg = c.teal },
+<     markdownCodeBlock = { fg = c.teal },
+---
+>     markdownCode = { fg = c.springgreen },
+>     markdownCodeBlock = { fg = c.springgreen },
+167,169c167,169
 <     ["@text.todo.checked"] = { fg = c.green1 }, -- For brackets and parens.
+<     ["@text.literal.markdown_inline"] = { bg = c.terminal_black, fg = c.blue },
+<     ["@text.literal.markdown"] = { link = "Normal" },
 ---
 >     ["@text.todo.checked"] = { fg = c.green }, -- For brackets and parens.
+>     -- ["@text.literal.markdown_inline"] = { bg = c.bg_light, fg = c.orange },
+>     ["@text.literal.markdown"] = { fg = c.fg_dark },
+216c216
+<     TSNote = { fg = c.bg, bg = c.info },
+---
+>     ["@text.note"] = { fg = c.bg, bg = c.info },
 222c222
 <     -- TSConstBuiltin      = { };    -- For constant that are built in the language: `nil` in Lua.
 ---
->     ["@constant.builtin"] = { fg = c.green };    -- For constant that are built in the language: `nil` in Lua.
+>     ["@constant.builtin"] = { fg = c.green }, -- For constant that are built in the language: `nil` in Lua.
 226c226
 <     ["@field"] = { fg = c.green1 }, -- For fields.
 ---
@@ -88,32 +116,72 @@
 <     ["@keyword"] = { fg = c.purple, style = options.styles.keywords }, -- For keywords that don't fall in previous categories.
 ---
 >     -- ["@keyword"] = { fg = c.purple, style = options.styles.keywords }, -- For keywords that don't fall in previous categories.
-239,240c239,240
+233a234
+>     ["@keyword.return"] = { fg = c.magenta, style = options.styles.keywords }, -- For keywords used to define a fuction.
+239,240c240,241
 <     ["@operator"] = { fg = c.blue5 }, -- For any operator: `+`, but also `->` and `*` in C.
 <     ["@parameter"] = { fg = c.yellow }, -- For parameters of a function.
 ---
 >     ["@operator"] = { fg = c.magenta }, -- For any operator: `+`, but also `->` and `*` in C.
 >     ["@parameter"] = { fg = c.orange }, -- For parameters of a function.
-242c242
+242,245c243,246
 <     ["@property"] = { fg = c.green1 }, -- Same as `TSField`.
+<     ["@punctuation.delimiter"] = { fg = c.blue5 }, -- For delimiters ie: `.`
+<     ["@punctuation.bracket"] = { fg = c.fg_dark }, -- For brackets and parens.
+<     ["@punctuation.special"] = { fg = c.blue5 }, -- For special punctutation that does not fall in the catagories before.
 ---
 >     ["@property"] = { fg = c.fg }, -- Same as `TSField`.
-248,249c248,249
+>     -- ["@punctuation.delimiter"] = { fg = c.blue5 }, -- For delimiters ie: `.`
+>     ["@punctuation.bracket"] = { fg = c.orange }, -- For brackets and parens.
+>     -- ["@punctuation.special"] = { fg = c.blue5 }, -- For special punctutation that does not fall in the catagories before.
+248,249c249,250
 <     ["@string.regex"] = { fg = c.blue6 }, -- For regexes.
 <     ["@string.escape"] = { fg = c.magenta }, -- For escape characters within a string.
 ---
 >     -- ["@string.regex"]   = { }, -- For regexes.
 >     ["@string.escape"] = { fg = c.purple }, -- For escape characters within a string.
-251c251,252
+251c252,253
 <     -- TSType              = { };    -- For types.
 ---
 >     -- ["@type"]           = { },    -- For types.
 >     ["@type.qualifier"] = { fg = c.magenta },
-254c255
+254c256
 <     ["@variable.builtin"] = { fg = c.red }, -- Variable names that are defined by the languages, like `this` or `self`.
 ---
 >     ["@variable.builtin"] = { fg = c.orange }, -- Variable names that are defined by the languages, like `this` or `self`.
-312,329c313,330
+259c261
+<     ["@text.reference"] = { fg = c.teal },
+---
+>     ["@text.reference"] = { fg = c.springgreen },
+262c264
+<     -- TSStrike            = { };    -- For strikethrough text.
+---
+>     ["@text.strike"] = { strikethrough = true }, -- For strikethrough text.
+264,265c266,267
+<     -- TSLiteral           = { };    -- Literal text.
+<     -- TSURI               = { };    -- Any URI like a link or email.
+---
+>     ["@text.literal"] = { fg = c.orange };    -- Literal text.
+>     ["@text.uri"] = { style = "underline" };    -- Any URI like a link or email.
+276c278
+<     rainbowcol4 = { fg = c.teal },
+---
+>     rainbowcol4 = { fg = c.springgreen },
+293a296,300
+>     diffIndexLine = { fg = c.fg, style = "bold" },
+>     diffOldFile = { fg = c.fg, style = "bold" },
+>     diffNewFile = { fg = c.fg, style = "bold" },
+>     diffLine = { fg = c.cyan },
+>     diffSubname = { fg = c.fg },
+297,301c304
+<     diffOldFile = { fg = c.yellow },
+<     diffNewFile = { fg = c.orange },
+<     diffFile = { fg = c.blue },
+<     diffLine = { fg = c.comment },
+<     diffIndexLine = { fg = c.magenta },
+---
+>     diffFile = { fg = c.fg, style = "bold" },
+312,329c315,332
 <     -- Neotest
 <     NeotestPassed = { fg = c.green },
 <     NeotestRunning = { fg = c.yellow },
@@ -141,7 +209,7 @@
 >     -- NeotestTest = { fg = c.fg_sidebar },
 >     -- NeotestNamespace = { fg = c.green2 },
 >     -- NeotestFocused = { fg = c.yellow },
->     -- NeotestFile = { fg = c.teal },
+>     -- NeotestFile = { fg = c.springgreen },
 >     -- NeotestDir = { fg = c.blue },
 >     -- NeotestBorder = { fg = c.blue },
 >     -- NeotestIndent = { fg = c.fg_sidebar },
@@ -151,7 +219,7 @@
 >     -- NeotestMarked = { fg = c.blue },
 >     -- NeotestTarget = { fg = c.blue },
 >     -- --[[ NeotestUnknown = {}, ]]
-370,377c371,378
+370,377c373,380
 <     -- glyph palette
 <     GlyphPalette1 = { fg = c.red1 },
 <     GlyphPalette2 = { fg = c.green },
@@ -169,11 +237,11 @@
 >     -- GlyphPalette6 = { fg = c.green },
 >     -- GlyphPalette7 = { fg = c.fg },
 >     -- GlyphPalette9 = { fg = c.red },
-424c425
+424c427
 <     healthSuccess = { fg = c.green1 },
 ---
 >     healthSuccess = { fg = c.green },
-479,483c480,484
+479,483c482,486
 <     -- Hop
 <     HopNextKey = { fg = c.magenta2, bold = true },
 <     HopNextKey1 = { fg = c.blue2, bold = true },
@@ -185,11 +253,11 @@
 >     -- HopNextKey1 = { fg = c.blue2, bold = true },
 >     -- HopNextKey2 = { fg = util.darken(c.blue2, 0.6) },
 >     -- HopUnmatched = { fg = c.dark3 },
-485c486
+485c488
 <     TSNodeKey = { fg = c.magenta2, bold = true },
 ---
 >     TSNodeKey = { fg = c.magenta, bold = true },
-488,505c489,506
+488,505c491,508
 <     LeapMatch = { bg = c.magenta2, fg = c.fg, bold = true },
 <     LeapLabelPrimary = { fg = c.magenta2, bold = true },
 <     LeapLabelSecondary = { fg = c.green1, bold = true },
@@ -227,63 +295,66 @@
 >     -- -- LightspeedShortcutOverlapped = { link = "LightspeedShortcut" },
 >     -- -- LightspeedUniqueChar = { link = "LightspeedUnlabeledMatch" },
 >     -- LightspeedUnlabeledMatch = { fg = c.blue2, bold = true },
-508,509c509,510
+508,509c511,512
 <     CmpDocumentation = { fg = c.fg, bg = c.bg_float },
 <     CmpDocumentationBorder = { fg = c.border_highlight, bg = c.bg_float },
 ---
 >     CmpDocumentation = { fg = c.fg, bg = c.bg_popup },
 >     CmpDocumentationBorder = { fg = c.border_highlight, bg = c.bg_popup },
-513,514c514,515
+513,514c516,517
 <     CmpItemAbbrMatch = { fg = c.blue1, bg = c.none },
 <     CmpItemAbbrMatchFuzzy = { fg = c.blue1, bg = c.none },
 ---
 >     CmpItemAbbrMatch = { fg = c.cyan, bg = c.none },
 >     CmpItemAbbrMatchFuzzy = { fg = c.cyan, bg = c.none },
-540,544c541,545
+540,545c543,549
 <     CmpItemKindProperty = { fg = c.green1, bg = c.none },
 <     CmpItemKindField = { fg = c.green1, bg = c.none },
 <     CmpItemKindTypeParameter = { fg = c.green1, bg = c.none },
 <     CmpItemKindEnumMember = { fg = c.green1, bg = c.none },
 <     CmpItemKindOperator = { fg = c.green1, bg = c.none },
+<     CmpItemKindSnippet = { fg = c.dark5, bg = c.none },
 ---
 >     CmpItemKindProperty = { fg = c.green, bg = c.none },
 >     CmpItemKindField = { fg = c.green, bg = c.none },
 >     CmpItemKindTypeParameter = { fg = c.green, bg = c.none },
 >     CmpItemKindEnumMember = { fg = c.green, bg = c.none },
 >     CmpItemKindOperator = { fg = c.green, bg = c.none },
-554,555c555,556
+> 
+>     CmpItemKindSnippet = { fg = c.purple, bg = c.none },
+554,555c558,559
 <     NavicIconsProperty = { fg = c.green1, bg = c.none },
 <     NavicIconsField = { fg = c.green1, bg = c.none },
 ---
 >     NavicIconsProperty = { fg = c.green, bg = c.none },
 >     NavicIconsField = { fg = c.green, bg = c.none },
-570c571
+570c574
 <     NavicIconsEnumMember = { fg = c.green1, bg = c.none },
 ---
 >     NavicIconsEnumMember = { fg = c.green, bg = c.none },
-574c575
+574c578
 <     NavicIconsTypeParameter = { fg = c.green1, bg = c.none },
 ---
 >     NavicIconsTypeParameter = { fg = c.green, bg = c.none },
-578,579c579,580
+578,579c582,583
 <     IndentBlanklineChar = { fg = c.fg_gutter, nocombine = true },
 <     IndentBlanklineContextChar = { fg = c.purple, nocombine = true },
 ---
 >     IndentBlanklineChar = { fg = util.darken(c.fg_gutter, 0.4), nocombine = true },
 >     IndentBlanklineContextChar = { fg = util.darken(c.fg_gutter, 0.7), nocombine = true },
-607c608
+607c611
 <     LazyProgressDone = { bold = true, fg = c.magenta2 },
 ---
 >     LazyProgressDone = { bold = true, fg = c.magenta },
-644c645
+644c648
 <     MiniJump = { bg = c.magenta2, fg = "#ffffff" },
 ---
 >     MiniJump = { bg = c.magenta, fg = "#ffffff" },
-646c647
+646c650
 <     MiniJump2dSpot = { fg = c.magenta2, bold = true, nocombine = true },
 ---
 >     MiniJump2dSpot = { fg = c.magenta, bold = true, nocombine = true },
-662,667c663,668
+662,667c666,671
 <     MiniStatuslineModeCommand = { fg = c.black, bg = c.yellow, bold = true },
 <     MiniStatuslineModeInsert = { fg = c.black, bg = c.green, bold = true },
 <     MiniStatuslineModeNormal = { fg = c.black, bg = c.blue, bold = true },
@@ -294,14 +365,14 @@
 >     MiniStatuslineModeCommand = { fg = c.bg, bg = c.yellow, bold = true },
 >     MiniStatuslineModeInsert = { fg = c.bg, bg = c.green, bold = true },
 >     MiniStatuslineModeNormal = { fg = c.bg, bg = c.blue, bold = true },
->     MiniStatuslineModeOther = { fg = c.bg, bg = c.teal, bold = true },
+>     MiniStatuslineModeOther = { fg = c.bg, bg = c.springgreen, bold = true },
 >     MiniStatuslineModeReplace = { fg = c.bg, bg = c.red, bold = true },
 >     MiniStatuslineModeVisual = { fg = c.bg, bg = c.magenta, bold = true },
-669c670
+669c673
 <     MiniSurround = { bg = c.orange, fg = c.black },
 ---
 >     MiniSurround = { bg = c.orange, fg = c.bg },
-710,714c711,715
+710,714c714,718
 <     NoiceCompletionItemKindProperty = { fg = c.green1, bg = c.none },
 <     NoiceCompletionItemKindField = { fg = c.green1, bg = c.none },
 <     NoiceCompletionItemKindTypeParameter = { fg = c.green1, bg = c.none },
@@ -313,7 +384,7 @@
 >     NoiceCompletionItemKindTypeParameter = { fg = c.green, bg = c.none },
 >     NoiceCompletionItemKindEnumMember = { fg = c.green, bg = c.none },
 >     NoiceCompletionItemKindOperator = { fg = c.green, bg = c.none },
-757,762d757
+757,762d760
 < 
 <   if config.is_day() then
 <     util.invert_colors(theme.colors)
