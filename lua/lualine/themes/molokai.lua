@@ -1,5 +1,4 @@
 local colors = require("molokai.colors").setup({ transform = true })
-local util = require("molokai.util")
 local config = require("molokai.config").options
 
 local molokai = {}

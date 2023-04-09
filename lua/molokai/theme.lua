@@ -216,7 +216,7 @@ function M.setup()
     ["@text.note"] = { fg = c.bg, bg = c.info },
     ["@text.warning"] = { fg = c.bg, bg = c.warning },
     ["@text.danger"] = { fg = c.bg, bg = c.error },
-    ["@constructor"] = { fg = c.magenta }, -- For constructor calls and definitions: `= { }` in Lua, and Java constructors.
+    -- ["@constructor"] = { }, -- For constructor calls and definitions: `= { }` in Lua, and Java constructors.
     -- TSConditional       = { };    -- For keywords related to conditionnals.
     -- TSConstant          = { };    -- For constants
     ["@constant.builtin"] = { fg = c.green }, -- For constant that are built in the language: `nil` in Lua.
@@ -249,7 +249,7 @@ function M.setup()
     -- ["@string.regex"]   = { }, -- For regexes.
     ["@string.escape"] = { fg = c.purple }, -- For escape characters within a string.
     -- TSSymbol            = { };    -- For identifiers referring to symbols or atoms.
-    -- ["@type"]           = { },    -- For types.
+    -- ["@type"] = { fg = c.green }, -- For types.
     ["@type.qualifier"] = { fg = c.magenta },
     -- TSTypeBuiltin       = { };    -- For builtin types.
     ["@variable"] = { style = options.styles.variables }, -- Any variable name that does not have another highlight.
@@ -263,13 +263,30 @@ function M.setup()
     -- TSUnderline         = { };    -- For text to be represented with an underline.
     ["@text.strike"] = { strikethrough = true }, -- For strikethrough text.
     -- TSTitle             = { };    -- Text that is part of a title.
-    ["@text.literal"] = { fg = c.orange };    -- Literal text.
-    ["@text.uri"] = { style = "underline" };    -- Any URI like a link or email.
+    ["@text.literal"] = { fg = c.orange }, -- Literal text.
+    ["@text.uri"] = { style = "underline" }, -- Any URI like a link or email.
     ["@text.diff.add"] = { link = "DiffAdd" },
     ["@text.diff.delete"] = { link = "DiffDelete" },
 
+    ["@namespace"] = { link = "Include" },
     -- Lua
     -- luaTSProperty = { fg = c.red }, -- Same as `TSField`.
+
+    -- LSP Semantic Token Groups
+    ["@lsp.type.comment"] = { link = "@comment" },
+    ["@lsp.type.enum"] = { link = "@type" },
+    ["@lsp.type.interface"] = { link = "Identifier" },
+    ["@lsp.type.keyword"] = { link = "@keyword" },
+    ["@lsp.type.namespace"] = { link = "@namespace" },
+    ["@lsp.type.parameter"] = { link = "@parameter" },
+    ["@lsp.type.property"] = { link = "@property" },
+    ["@lsp.type.variable"] = {}, -- use treesitter styles for regular variables
+    ["@lsp.typemod.method.defaultLibrary"] = { link = "@function.builtin" },
+    ["@lsp.typemod.function.defaultLibrary"] = { link = "@function.builtin" },
+    ["@lsp.typemod.operator.injected"] = { link = "@operator" },
+    ["@lsp.typemod.string.injected"] = { link = "@string" },
+    ["@lsp.typemod.variable.defaultLibrary"] = { link = "@variable.builtin" },
+    ["@lsp.typemod.variable.injected"] = { link = "@variable" },
 
     -- ts-rainbow
     rainbowcol1 = { fg = c.red },
@@ -642,7 +659,7 @@ function M.setup()
     MiniCursorword = { bg = c.fg_gutter },
     MiniCursorwordCurrent = { bg = c.fg_gutter },
 
-    MiniIndentscopeSymbol = { fg = c.blue1 },
+    MiniIndentscopeSymbol = { fg = util.darken(c.fg_gutter, 0.7), nocombine = true },
     MiniIndentscopePrefix = { nocombine = true }, -- Make it invisible
 
     MiniJump = { bg = c.magenta, fg = "#ffffff" },
@@ -688,6 +705,7 @@ function M.setup()
     MiniTrailspace = { bg = c.red },
 
     -- Noice
+    NoiceMini = { fg = c.fg, bg = c.bg_dark },
 
     NoiceCompletionItemKindDefault = { fg = c.fg_dark, bg = c.none },
 
